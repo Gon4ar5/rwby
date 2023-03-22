@@ -4,45 +4,59 @@ STATION = {
 }
 
 # set guid, logged_token, session, logged_time, lang headers to global variables
-def set_headers_from_response(response)
+def set_headers_from_response(response, user)
   response['set-cookie'].split('; ').map do |cookie|
     cookie = cookie.split(', ')[1] if cookie.include?("path")
     next if cookie == nil
 
     cookie_arr = cookie.split("=")
-    $logged_token ||= cookie_arr[-1] if cookie_arr[0] == 'logged_token' && cookie_arr[-1] != 'deleted'
-    $logged_fname ||= cookie_arr[-1] if cookie_arr[0] == 'logged_fname'
-    $logged_lname ||= cookie_arr[-1] if cookie_arr[0] == 'logged_lname'
-    $logged_email ||= cookie_arr[-1] if cookie_arr[0] == 'logged_email'
-    $logged_time = cookie_arr[-1] if cookie_arr[0] == 'logged_time'
-    $session ||= cookie_arr[-1] if cookie_arr[0] == 'session'
-    $lang ||= cookie_arr[-1] if cookie_arr[0] == 'lang'
-    $guid ||= cookie_arr[-1] if cookie_arr[0] == 'guid'
+
+    case cookie_arr[0]
+      when 'logged_token'
+        user.logged_token ||= cookie_arr[-1] if cookie_arr[-1] != 'deleted'
+      when 'logged_fname'
+        ser.logged_fname ||= cookie_arr[-1]
+      when 'logged_lname'
+        user.logged_lname ||= cookie_arr[-1]
+      when 'logged_email'
+        user.logged_email ||= cookie_arr[-1]
+      when 'logged_time'
+        user.logged_time = cookie_arr[-1]
+      when 'session'
+        user.session ||= cookie_arr[-1]
+      when 'lang'
+        user.lang ||= cookie_arr[-1]
+      when 'guid'
+        user.guid ||= cookie_arr[-1]
+    end
   end
 end
 
 # sets and returns cookies for each request
-def set_request_cookie_header(request, guid_required: false)
-  request["Cookie"] = "lang=#{$lang};"
-  request["Cookie"] += " logged_fname=#{$logged_fname};" if $logged_fname
-  request["Cookie"] += " logged_lname=#{$logged_lname};" if $logged_lname
-  request["Cookie"] += " logged_email=#{$logged_email};" if $logged_email
-  request["Cookie"] += " logged_token=#{$logged_token};" if $logged_token
-  request["Cookie"] += " logged_time=#{$logged_time};" if $logged_time
-  request["Cookie"] += " session=#{$session};" if $session
+def set_request_cookie_header(request, user, guid_required: false)
+  #Cookie: session=reflvt254mqfq9l95hcrrjiqn2; __utmc=168334370; __utmz=168334370.1679319889.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.3.1113300649.1679319889; _gid=GA1.3.1640040900.1679512248; __utma=168334370.1113300649.1679319889.1679512248.1679523896.5; 
+  #guid=976af349ae70c6584c9f0bc7a5cefbd0d5f79863%7Edd8c972e7eb7a4eaaf489f6c619765fe; 
+  #logged_fname=184e41af1cc8fbe6a2c2d5a8af974116a4bbe033%7Etupoe; logged_lname=72d6b8271554ac80005cd6702fa762aa9418ab14%7Eeblo; logged_email=c661b81441ff41aac52a84d6ee0b5e8c0c52d7f3%7Eeblo-tupoe1488%40mail.ru; logged_token=80a3ca639d31e9ef91511844403b8a7613f2a41d%7EeyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwidXNlciI6eyJpZCI6MTQ5MjYxOSwiZW1haWwiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwibGFuZ3VhZ2UiOiJlbiJ9LCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX1UifV0sImlhdCI6MTY3OTUyNDM5NSwiZXhwIjoxNjgwMzg4Mzk1fQ.h8dpxg1HBkbgBicHfbVSMV1AtOc2FrtWdQR9dNHuA8CO7x-y71S6Vz2MKoz7DF2V_XT5rMx6B3VQYEufWBKuVxkUuwIPEXfqO3CckUe5j-vNUKmXoduebRhNgAR4Ks4_QBaCe6x175Jg561yYv5msV65qK2nz5_hGl8DxS3wICUYscbvKr3jX9CmCxmwo8jFsSAOT8tBQNbmJ_pr9AQP5xRKpKpGWl2ksVEREbzf2v2deNZUYD81QG-ZPQxu-5rsEGV5maedQ0C_gGhVosb0yI6tGXuPF0zzF0dPbgDIKBf3ySuq_2xHjkzXoiuBXay3aiKOSpj1PNaahRekt2SvYg; __utmt=1; _gat_UA-151514847-1=1; lang=34c3fd6e2166eb010467309a0411bcbd1bad6ac7%7Een; logged_time=c21c1bc8d5657acbf92240199505a909a96de89f%7E1679524837; __utmb=168334370.20.10.1679523896
+  request["Cookie"] = "lang=#{user.lang};"
+  request["Cookie"] += " logged_fname=#{user.logged_fname};" if user.logged_fname
+  request["Cookie"] += " logged_lname=#{user.logged_lname};" if user.logged_lname
+  request["Cookie"] += " logged_email=#{user.logged_email};" if user.logged_email
+  request["Cookie"] += " logged_token=#{user.logged_token};" if user.logged_token
+  request["Cookie"] += " logged_time=#{user.logged_time};" if user.logged_time
+  request["Cookie"] += " session=#{user.session};" if user.session
 
-  request["Cookie"] += request["Cookie"] + " guid=#{$guid};" if guid_required
+  request["Cookie"] += request["Cookie"] + " guid=#{user.guid};" if guid_required
 
   request["Cookie"]
 end
 
 # Add common headers and return request object
-def add_default_headers(request, add_addtl_headers: nil)
+def add_default_headers(request, user, add_addtl_headers: nil)
   request["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
   request["Accept-Language"] = "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
   request["Cache-Control"] = "max-age=0"
   request["Connection"] = "keep-alive"
-  request["Cookie"] = "session=#{$session}; lang=#{$lang};" 
+  request["Cookie"] = "session=#{user.session}; lang=#{user.lang};" 
   request["Sec-Fetch-Dest"] = "document"
   request["Sec-Fetch-Mode"] = "navigate"
   request["Sec-Fetch-Site"] = "cross-site"
@@ -69,7 +83,6 @@ def add_additional_headers(request)
 
   request
 end
-
 # Set https
 def req_options(uri)
   { use_ssl: uri.scheme == "https" }
@@ -145,7 +158,7 @@ def form_data_for_passangers_request(free_places_hash, second)
     places_cost: 20.18,
     car_places: free_places_hash, 
     car_details: second,
-    car_type: 6,
+    car_type: 5,
     car_number: car["number"],
     is_gender_coupe: false,
     sale_on_two: false,
@@ -158,12 +171,12 @@ def form_data_for_passangers_request(free_places_hash, second)
 end
 
 # hardcoded cookies, do not read it plz
-def parse_cookie(response)
+def parse_cookie(response, user)
   response['set-cookie'].split('; ').map do |cookie|
     cookie = cookie.split(', ')[1] if cookie.include?("path")
     next if cookie == nil
 
     cookie_arr = cookie.split("=")
     "#{cookie_arr[0]}=#{cookie_arr[1]}"
-  end.compact[0..4].join('; ') + "; session=#{$session}"
+  end.compact[0..4].join('; ') + "; session=#{user.session}"
 end
