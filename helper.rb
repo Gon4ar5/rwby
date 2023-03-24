@@ -62,7 +62,7 @@ def add_default_headers(request, user, add_addtl_headers: nil)
   request["Sec-Fetch-Site"] = "cross-site"
   request["Sec-Fetch-User"] = "?1"
   request["Upgrade-Insecure-Requests"] = "1"
-  request["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+  request["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
   request["Sec-Ch-Ua"] = "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"100\", \"Google Chrome\";v=\"100\""
   request["Sec-Ch-Ua-Mobile"] = "?0"
   request["Sec-Ch-Ua-Platform"] = "\"macOS\""
@@ -158,7 +158,7 @@ def form_data_for_passangers_request(free_places_hash, second)
     places_cost: 20.18,
     car_places: free_places_hash, 
     car_details: second,
-    car_type: 5,
+    car_type: 13,
     car_number: car["number"],
     is_gender_coupe: false,
     sale_on_two: false,

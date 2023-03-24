@@ -138,18 +138,10 @@ describe 'requests' do
     end
   end
   
-  # # Send all info about train, seats and your seat
-  # context '#send_request_with_seat_info' do
-  #   send_req_for_session_token(user)
-  #   cookie = send_first_post_req(user)
-  #   send_second_get_req(cookie, user)
-  #   send_third_get_req(cookie, user)
-  #   params_for_request = get_route_params(user)
-  #   send_request_for_guid(params_for_request, user)
-  #   free_places_hash = send_ajax_req_for_free_places_hash(user)
-  #   second_ajax_resp = send_ajax_req_for_train_pixels(free_places_hash, user)
-
-  # end
+  # Send all info about train, seats and your seat
+  context '#send_request_with_seat_info' do
+    # idk how to set up guid
+  end
 
   # # Send last request with user info(first-middle-last names, passport data, etc)
   # context '#send_passanger_info' do

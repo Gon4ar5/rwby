@@ -2,7 +2,6 @@
 def send_req_for_session_token(user)
   uri = URI.parse("https://pass.rw.by/en/")
   request = Net::HTTP::Get.new(uri)
-
   response = send_req(uri, request)
 
   set_headers_from_response(response, user)
@@ -152,6 +151,7 @@ def send_ajax_req_for_train_pixels(free_places_hash, user)
 end 
 
 # Send all info about train, seats and your seat
+# They send me the wrong guid, so this request doesnt work
 def send_request_with_seat_info(free_places_hash, second, user)
   uri = URI.parse("https://pass.rw.by/en/order/passengers/")
   request = Net::HTTP::Post.new(uri)
@@ -163,11 +163,9 @@ def send_request_with_seat_info(free_places_hash, second, user)
 
   # set up all information for the request body
   request.body = form_data_for_passangers_request(free_places_hash, second)
-  p request.body
   response = send_req(uri, request)
 
   set_headers_from_response(response, user)
-  p response
 
   File.write('./html/seats_info.html', response.body)
   #p response.body
@@ -203,7 +201,6 @@ def send_orders_request(user)
 
   add_default_headers(request, user)
   request["Referer"] = "https://pass.rw.by/en/?path=en%2F"
-  #request["Cookie"] = "lang=a99e6f9df71a6809253b6a85825dec8e3130af73%7Een; session=b4s9danl3h4706nlqrjgufaq01; logged_fname=258126e822268ded36188f474197e561e7fbf34e%7Etupoe; logged_lname=48c78a9d61a206a3ec7fb4eff1429256359dce9e%7Eeblo; logged_email=c76f46899cd68a708c8021b0b6520b1969fdf213%7Eeblo-tupoe1488%40mail.ru; logged_token=f404179be803da00ffbd03dfccf42a2f7dbf8e4f%7EeyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwidXNlciI6eyJpZCI6MTQ5MjYxOSwiZW1haWwiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwibGFuZ3VhZ2UiOiJlbiJ9LCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX1UifV0sImlhdCI6MTY1MDkxMzQ1NCwiZXhwIjoxNjUxNzc3NDU0fQ.j08are2tbnx8ol_ka6TI_yYwQH9x__yhAor5MSz8jy4WmhJaK-e4cLZpOl6ETnzZU_VNvO3z0jvA7Ca8MH73WA5M_u-KGSFO9yn1uh1Lcxn_dxW_4aZQFlHc6okNduZwvmVa2pebe1B_V1Ep-LG4OqwN_VP6-R2umjpw-ABXmHoCQiYBlfXY-yWTPfkPBo-VB5KwasGB0XhMZxqd_kdUAu_Kw32qd-OVgq3UzWoQBzpzorC7khf_SCP-egx-m1EQCDjSO8gJXuEgNBl9lu0dbJjxxptUtdRGTeiYxSvkhOwSUynZHaqAEbU4IlVCNrN99b65XAWRFLocFVoAYIgVlA; logged_time=d7e41812e3e90f9ccafda5bc623bb2d08675531b%7E1650913455"
   set_request_cookie_header(request, user)
 
   response = send_req(uri, request)
