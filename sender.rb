@@ -183,7 +183,7 @@ def send_passanger_info(user)
   add_default_headers(request, user)
   request["Origin"] = "https://pass.rw.by"
   request["Referer"] = "https://pass.rw.by/en/order/passengers/"
-  #request["Cookie"] = "lang=a99e6f9df71a6809253b6a85825dec8e3130af73%7Een; session=b4s9danl3h4706nlqrjgufaq01; logged_fname=258126e822268ded36188f474197e561e7fbf34e%7Etupoe; logged_lname=48c78a9d61a206a3ec7fb4eff1429256359dce9e%7Eeblo; logged_email=c76f46899cd68a708c8021b0b6520b1969fdf213%7Eeblo-tupoe1488%40mail.ru; logged_token=f404179be803da00ffbd03dfccf42a2f7dbf8e4f%7EeyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwidXNlciI6eyJpZCI6MTQ5MjYxOSwiZW1haWwiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwibGFuZ3VhZ2UiOiJlbiJ9LCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX1UifV0sImlhdCI6MTY1MDkxMzQ1NCwiZXhwIjoxNjUxNzc3NDU0fQ.j08are2tbnx8ol_ka6TI_yYwQH9x__yhAor5MSz8jy4WmhJaK-e4cLZpOl6ETnzZU_VNvO3z0jvA7Ca8MH73WA5M_u-KGSFO9yn1uh1Lcxn_dxW_4aZQFlHc6okNduZwvmVa2pebe1B_V1Ep-LG4OqwN_VP6-R2umjpw-ABXmHoCQiYBlfXY-yWTPfkPBo-VB5KwasGB0XhMZxqd_kdUAu_Kw32qd-OVgq3UzWoQBzpzorC7khf_SCP-egx-m1EQCDjSO8gJXuEgNBl9lu0dbJjxxptUtdRGTeiYxSvkhOwSUynZHaqAEbU4IlVCNrN99b65XAWRFLocFVoAYIgVlA; guid=654d01ab4f3357d7c618d706c7bba6b0d3ad1bf8%7E62aacb8e12afde1443b85750d4bba5a4; logged_time=1d47c90c813419ff7dd1b5f04481f0a4d87d95f3%7E1650913874"
+
   set_request_cookie_header(request, user, guid_required: true)
 
   # set user info(first-middle-last names, passport data, etc)
