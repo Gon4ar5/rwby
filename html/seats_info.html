@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="ru-RU" prefix="og:https://ogp.me/ns#">
+<head data-special-styles="/media/css/special.min.css">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="cmsmagazine" content="76c5fb8872e8328840d5f6d32da019af">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no" id="metaViewport">
+    <meta property="og:title" content="Schedule and search for tickets" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://pass.rw.by/en/order/passengers"/>
+    <meta property="og:image" content="https://pass.rw.by/media/img/logo.svg" />
+    <meta property="og:site_name" content="pass.rw.by" />
+    <title>Schedule and search for tickets</title>
+    <link rel="icon" type="image/png" href="/media/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="/media/apple-touch-icon.png">
+    <link rel="stylesheet" href="/media/css/app.min.css?v=1.0.60" id="mainStyles">
+    <link rel="stylesheet" href="/media/css/override.css">
+    <script type="text/javascript">
+        msg_field_required = 'Required field';
+        root = '/en/';
+        root_no_lang = '/';
+        backend_map = 'https://georasp.rw.by';
+        //backend_sppd4 = 'https://10.200.3.35/';
+        backend_sppd4 = root  + 'ajax/sppd4/';
+        backend_sppd4_apikey = 'c11f8d06e3e1594815b9c4ebaddf19a0';
+
+        no_geo_location = 'Your browser does not support GEO location feature.';
+        max_calendar_days = 60;
+        curent_page_url = 'en/order/passengers';
+        serverDate = new Date(Date.parse('2023-03-26T04:47:33+03:00')); //ISO 8601 Extended YYYY-MM-DDTHH:mm:ss.sssZ
+        isUnauthorizedPurchaseAllowed = false; // Разрешена ли покупа для неавторизованных пользователей
+        isUserAuth = true; // Авторизован ли пользователь
+    </script>
+    
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5JMN954');</script>
+        <!-- End Google Tag Manager -->
+    
+    <script src="/media/js/libs/modernizr-custom.min.js"></script>
+    <script src="/media/js/libs/jquery-3.3.1.min.js"></script>
+    <script src="/media/js/libs/jquery.touchSwipe.min.js"></script>
+    <script src="/media/js/libs/current-device.min.js"></script>
+    <script src="/media/js/libs/jquery.validate.min.js"></script>
+    <script src="/media/js/libs/jquery.formstyler.min.js"></script>
+    <script src="/media/js/libs/jquery.webui-popover-custom.min.js"></script>
+    <script src="/media/js/libs/jquery.mCustomScrollbar-custom.min.js"></script>
+    <script src="/media/js/libs/jquery-ui.custom.min.js?v=1.0.60"></script>
+    <script src="/media/js/libs/jquery.maskedinput.min.js"></script>
+    <script src="/media/js/libs/jquery-ui.datepicker.en.min.js"></script>
+    <script src="/media/js/libs/markerclusterer.min.js"></script>
+    <script src="/media/js/libs/bootstrap-notify.min.js"></script>
+    <script src="/media/js/libs/slick.min.js"></script>
+    <link rel="stylesheet" href="/media/css/libs/magnific-popup.min.css">
+    <script src="/media/js/libs/jquery.magnific-popup.min.js"></script>
+    <script src="/media/js/app.min.js?v=1.0.60"></script>
+    <script src="/media/js/libs/special.min.js"></script>
+    <script src="/media/js/route_filters.js"></script>
+    <script src="/media/js/order.js"></script>
+    <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-31356575-1']);
+            _gaq.push(['_setDomainName', 'rw.by']);
+            _gaq.push(['_addOrganic', 'akavita.by', 'z']);
+            _gaq.push(['_addOrganic', 'tut.by', 'query']);
+            _gaq.push(['_addOrganic', 'search.tut.by', 'query']);
+            _gaq.push(['_addOrganic', 'all.by', 'query']);
+            _gaq.push(['_addOrganic', 'go.mail.ru',  'q']);
+            _gaq.push(['_addOrganic', 'nova.rambler.ru',  'query']);
+            _gaq.push(['_addOrganic', 'nigma.ru', 's']);
+            _gaq.push(['_addOrganic', 'webalta.ru', 'q']);
+            _gaq.push(['_addOrganic', 'aport.ru', 'r']);
+            _gaq.push(['_addOrganic', 'poisk.ru', 'text']);
+            _gaq.push(['_addOrganic', 'km.ru', 'sq']);
+            _gaq.push(['_addOrganic', 'liveinternet.ru', 'ask']);
+            _gaq.push(['_addOrganic', 'quintura.ru', 'request']);
+            _gaq.push(['_addOrganic', 'search.qip.ru', 'query']);
+            _gaq.push(['_addOrganic', 'gde.ru', 'keywords']);
+            _gaq.push(['_addOrganic', 'gogo.ru', 'q']);
+            _gaq.push(['_addOrganic', 'ru.yahoo.com', 'p']);
+            _gaq.push(['_addOrganic', 'meta.ua', 'q']);
+            _gaq.push(['_addOrganic', 'bigmir.net', 'q']);
+            _gaq.push(['_trackPageview']);
+            _gaq.push(['_trackPageLoadTime']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+
+
+    <script type="text/javascript">
+        $.ajaxSetup ({
+            // Disable caching of AJAX responses
+            cache: false
+        });
+
+                setTimeout(function(){
+            window.location.href = '/en/lk/logout/?autologout=true';
+        }, 1200000);
+            </script>
+    <script> // Common i18n
+    var WS_RW_APP = WS_RW_APP || {};
+    WS_RW_APP.lang = WS_RW_APP.lang || {};
+    WS_RW_APP.lang.Common = {
+        from: "from",
+        today: "today",
+        yesterday: "yesterday",
+        tomorrow: "tomorrow",
+        everyday: "everyday",
+        months: [
+                            "Jan.",
+                            "Feb.",
+                            "Mar.",
+                            "Apr.",
+                            "May.",
+                            "Jun.",
+                            "Jul.",
+                            "Aug.",
+                            "Sept.",
+                            "Oct.",
+                            "Nov.",
+                            "Dec.",
+                    ]
+    };
+    WS_RW_APP.lang.OneRowMenu = {
+        more: "More"
+    };
+
+    $.validator.messages = {
+        required: "Fill in the field",
+        remote: "Correct fields",
+        email: "Incorrect e-mail",
+        url: "Enter a valid URL",
+        date: "Enter the correct date",
+        dateISO: "Enter the correct date (ISO)",
+        birthday: "Wrong date of birth",
+        number: "Enter a valid number",
+        digits: "Enter numbers only",
+        creditcard: "Enter a valid credit card number",
+        equalTo: "Fields do not match",
+        maxlength: $.validator.format("Maximum {0} characters"),
+        minlength: $.validator.format("At least {0} characters"),
+        rangelength: $.validator.format("Enter a value from {0} to {1} characters"),
+        range: $.validator.format("Enter a value between {0} and {1}"),
+        max: $.validator.format("Maximum {0}"),
+        min: $.validator.format("At least {0}"),
+        requiredphone: "Fill in the field",
+        minlenghtphone: "Fill in the phone number completely",
+        documentNumber: "Incorrectly filled out data",
+        login: "The data is incorrectly filled",
+        latin: "Only the Latin alphabet",
+        extension: "Invalid file format",
+        maxsize: "Invalid file size",
+        validChildAge: "The child's age at the time of the trip is over the age limit",
+        excludeSymbol: "When entering the number of the identity document, the symbol «№» is not given."
+    };
+</script>
+</head>
+<body class="en js-off pm-close inner">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JMN954"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM5CHB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+<div class="g-wrap" id="db">
+    <div class="outer-bg pm-content">
+        <div class="g-wrapper">
+            <div class="g-wrapper_i">
+                <header class="g-header">
+    <div class="g-header_i">
+        <div class="special-menu">
+            <div class="special-menu__wrap clearfix">
+                <div class="special-menu__fs">
+                    <div class="special-menu__fs-title">Font size:</div><a class="special-menu__fs-btn special-menu__fs-btn--small" href="#" data-param="fontSize" data-value="special-fs-small"><span>A</span></a><a class="special-menu__fs-btn special-menu__fs-btn--medium" href="#" data-param="fontSize" data-value="special-fs-medium"><span>A</span></a><a class="special-menu__fs-btn special-menu__fs-btn--big" href="#" data-param="fontSize" data-value="special-fs-big"><span>A</span></a>
+                </div>
+                <div class="special-menu__themes">
+                    <div class="special-menu__theme-title">Site Color:</div><a class="special-menu__theme-btn special-menu__theme-btn--white" href="#" data-param="theme" data-value="special-theme-white"><span>C</span></a><a class="special-menu__theme-btn special-menu__theme-btn--black" href="#" data-param="theme" data-value="special-theme-black"><span>C</span></a><a class="special-menu__theme-btn special-menu__theme-btn--blue" href="#" data-param="theme" data-value="special-theme-blue"><span>C</span></a>
+                </div>
+                <div class="special-menu__settings"><a class="special-menu__settings-btn" href="#">Settings</a></div>
+            </div>
+            <div class="special-menu__dropdown">
+                <div class="special-menu__dropdown-main-title">Settings</div>
+                <div class="special-menu__font">
+                    <div class="special-menu__dropdown-title">Font:</div><a class="special-menu__font-btn" href="#" data-param="font" data-value="special-font-trebuchet"><span>Trebuchet MS</span></a><a class="special-menu__font-btn" href="#" data-param="font" data-value="special-font-georgia"><span>Georgia</span></a>
+                </div>
+                <div class="special-menu__ls">
+                    <div class="special-menu__dropdown-title">Letter spacing:</div><a class="special-menu__ls-btn" href="#" data-param="letterSpacing" data-value="special-ls-small"><span>Standard</span></a><a class="special-menu__ls-btn" href="#" data-param="letterSpacing" data-value="special-ls-medium"><span>Magnified</span></a><a class="special-menu__ls-btn" href="#" data-param="letterSpacing" data-value="special-ls-big"><span>Large</span></a>
+                </div>
+                <div class="special-menu__theme-chooser">
+                    <div class="special-menu__dropdown-title">Color Scheme:</div>
+                    <div class="special-menu__row">
+                        <div class="special-menu__col"><a class="special-menu__theme-rect special-menu__theme-rect--white" href="#" data-param="theme" data-value="special-theme-white">
+                                <div class="special-menu__theme-rect-wrap"><span>Black on white</span></div></a></div>
+                        <div class="special-menu__col"><a class="special-menu__theme-rect special-menu__theme-rect--black" href="#" data-param="theme" data-value="special-theme-black">
+                                <div class="special-menu__theme-rect-wrap"><span>White on black</span></div></a></div>
+                        <div class="special-menu__col"><a class="special-menu__theme-rect special-menu__theme-rect--blue" href="#" data-param="theme" data-value="special-theme-blue">
+                                <div class="special-menu__theme-rect-wrap"><span>Dark blue over blue</span></div></a></div>
+                    </div>
+                </div>
+                <div class="special-menu__dropdown-buttons"><a class="special-menu__reset-btn" href="#">Revert to default settings</a><a class="special-menu__close-btn" href="#">Close</a></div>
+            </div>
+        </div>
+        <div class="header-top">
+            <div class="lang">
+                <ul class="list list-reset clearfix">
+                                                                        <li class="item"><a href="/ru/?c=true">Рус</a></li>
+                                                                                                <li class="item"><a href="/be/?c=true">Бел</a></li>
+                                                                                                <li class="item active"><span>Eng</span></li>
+                                                            </ul>
+            </div>
+            <div id="Currency" class="currency">
+                <a class="head js-current-currency" href="#" data-toggle="dropdown">BYN</a>
+                <div class="dropdown">
+                    <ul class="list list-reset clearfix">
+                        <li class="item active"><a class="js-currency" data-currency-name='byn' href="#">BYN</a></li>
+                        <li class="item"><a class="js-currency" data-currency-name='rub' href="#">RUB</a></li>
+                        <li class="item"><a class="js-currency" data-currency-name='eur' href="#">EUR</a></li>
+                        <li class="item"><a class="js-currency" data-currency-name='usd' href="#">USD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                !function () {
+                    'use strict';
+
+                    $(function () {
+                        WS_RW_APP.Factory('Currency', {
+                            block: $('#Currency')
+                        });
+                    });
+                }();
+            </script>
+            <div class="contacts-head-4">
+                <ul class="list list-reset break-word">
+                    <li class="item"><a href="tel:105"><span>105</span></a></li>
+                </ul>
+            </div>
+            <div class="spec-btn"><a href="#"><span>Version for the visually impaired</span><span class="back-text">Normal version</span></a></div>
+            <div class="head-search hide-print">
+                <div class="backdrop"></div>
+                <div class="wrap">
+                    <div class="btn-open"></div>
+                    <form class="search-form" action="/en/search/" method="get">
+                        <div class="form-wrap">
+                            <input class="btn-search" type="submit" value="">
+                            <input class="field" id="headSearch" type="search" placeholder="Search" name="q" maxlength="50" required="" value="">
+                            <div class="btn-close"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="logo-png">
+                <a class="pic" href="/en/"><span class="pic-wrap"><img src="/media/img/logo.svg" alt="Belarusian Railway" title="Belarusian Railway"></span><span class="title">Online Ticket Service</span></a>
+            </div>
+            <div class="menu-drop-8 not-inited">
+                <ul class="menu_level_1 break-word list-reset">
+                    <li class="item_1"><a href="/en/tablo/"><span class="icon svg-menu-drop-8-clock"></span><span>Online schedule</span></a></li>
+                    <li class="item_1 more"><span><span>More</span><span class="icon"></span></span>
+                        <div class="submenu">
+                            <ul class="menu_level_2 list-reset"></ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-drop-9">
+                <ul class="menu_level_1 break-word list-reset">
+                    <li class="item_1 tickets active" data-isBasketWasCleared="0">
+                        <a href="/en/order/payment/">
+                            <span class="icon svg-menu-drop-9-ticket">
+                                                            </span>
+                            <span>Cart</span>
+                        </a>
+                                                <script>
+                            !function () {
+                                'use strict';
+
+                                $(window).on('load', function () {
+                                    var block = $('.basket-hint');
+                                    if (block.length > 0) {
+                                        block.addClass('active');
+                                    }
+                                });
+                            }();
+                        </script>
+                    </li>
+                    <li class="item_1 cabinet">
+                                                <a href="/en/lk/orders/">
+                            <span class="icon profile-active">
+                                <span class="letter">te</span>
+                            </span>
+                            <span>tupoe eblo</span>
+                        </a>
+                            <div class="submenu">
+                                <ul class="menu_level_2 list-reset">
+                                    <li class="item_2"><a href="/en/lk/orders/"><span>Orders</span></a></li>
+                                    <li class="item_2"><a href="/en/lk/passengers/"><span>Passengers</span></a></li>
+                                    <li class="item_2"><a href="/en/lk/favorites/"><span>Favorites</span></a></li>
+                                    <li class="item_2"><a href="/en/lk/profile/"><span>Profile data</span></a></li>
+                                    <li class="item_2 separator"><a href="/en/lk/logout/"><span>Exit</span></a></li>
+                                </ul>
+                            </div>
+                                            </li>
+                    <li class="item_1 info-link"><a class="js-open-help" href="#"><span class="icon svg-menu-drop-9-info"></span><span>Help</span></a></li>
+                </ul>
+            </div>
+            <div class="hamb-wrap">
+                <button class="hamburger pm-opener closed"><span class="ico"></span></button>
+                <div class="pm-closer"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+                                    <div class="g-main">
+    <div class="g-main_i container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="sch-stage">
+                    <div class="list-inner">
+                        <ul class="break-word list list-reset menu_level_1">
+                            <li class="item_1 complete">
+                                <a href="/en/route/?path=en%2Froute%2F&from=Minsk+Pasa%C5%BEyrski&from_exp=2100001&from_esr=&to=Pinsk&to_exp=&to_esr=&front_date=today&date=today"><span>Train selection</span></a>
+                            </li>
+                            <li class="item_1 complete">
+                                <a href="/en/order/places/"><span>Choice of carriage and seat</span></a>
+                            </li>
+                            <li class="item_1 active">
+                                <span><span>Passenger Details</span></span>
+                            </li>
+                            <li class="item_1 unavail">
+                                <span><span>Ticket Cart</span></span>
+                            </li>
+                            <li class="item_1 unavail">
+                                <span><span>Payment</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h1 class="hidden" id="title">Polack&nbsp;&mdash; Brest Centraĺny</h1>
+            </div>
+        </div>
+        <div class="row">
+            <main class="g-content col-xs-12 clearfix" id="workarea">
+                <div id="passengersInfo" class="row">
+                    <div class="col-md-9 col-xs-12">
+                                                                        <div class="pl-route">
+                            <div class="pl-route__b-main">
+                                <div class="pl-route__top">
+                                    <div class="pl-route__title">Minsk Pasažyrski&nbsp;&mdash; Pinsk, <span class="title-date">26 March (Sun)</span>
+                                    </div>
+                                    <div class="pl-route__inner">
+                                        <div class="pl-route__left">
+                                            <div class="pl-route__col-wrap">
+                                                <div class="pl-route__col arrival">
+                                                    <div class="pl-route__time">22:52</div>
+                                                    <div class="pl-route__date">(26 March, Sun)</div>
+                                                    <div class="pl-route__station">Minsk Pasažyrski</div>
+                                                </div>
+                                                <div class="pl-route__col duration">
+                                                    <div class="pl-route__duration">5 h 48 min</div>
+                                                </div>
+                                                <div class="pl-route__col departure">
+                                                    <div class="pl-route__time">04:40</div>
+                                                    <div class="pl-route__date">(27 March, Mon)</div>
+                                                    <div class="pl-route__station">Pinsk</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pl-route__right">
+                                            <div class="pl-route__train-type"><i class="svg-interregional_economy"></i><span class="pl-route__route-type">Interregional economy lines</span></div>
+                                                                                            <a class="pl-route__route" href="/en/train/?train=657Б&from_exp=2100001&to_exp=2100180&date=2023-03-26&from=Minsk Pasažyrski&to=Pinsk"><span class="train-num">657Б</span>&nbsp;Polack&nbsp;&mdash; Brest Centraĺny</a>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                                <div class="pl-route__bottom">
+                                    <div class="pl-route__inner">
+                                        <div class="pl-route__left">
+                                            <div class="pl-route__carriage-wrap">
+                                                <div class="pl-route__carriage"><span class="col-name"> Carriage :</span> <span class="col-descr"> №09</span>
+                                                </div>
+                                                <div class="pl-route__places">
+                                                    <span class="col-name">Places:</span>
+                                                    <span class="col-descr">
+                                                                                                                                                                        №16 <small>(upper)</small>                                                                                                                                                            </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pl-route__right js-sel-bedding-price-block">
+                                                                                            <div class="js-sel-bedding-price-off">
+                                                    <div class="pl-route__cost">
+                                                        <span class='ticket-cost'>
+                                                            20,18                                                        </span>
+                                                        <span class='ticket-currency'>BYN</span></div>
+                                                    <div class="pl-route__descr">The price does not include benefits</div>
+
+                                                </div>
+                                                                                                    <div class="js-sel-bedding-price-on" style="display: none;">
+                                                        <div class="pl-route__cost">
+                                                            <span class='ticket-cost'>
+                                                                23,18                                                            </span>
+                                                            <span class='ticket-currency'>BYN</span></div>
+                                                        <div class="pl-route__descr">Benefits are not included in the price. Bed linen is included in the price</div>
+                                                    </div>
+                                                                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                    <div class="pl-route__footer">
+                                Attention! E-registration is carried out automatically. You can give up on e-registration in "Personal cabinet"
+                            </div>
+                                                                                </div>
+
+                                            </div>
+                    <div class="pl-sidebar col-md-3 col-xs-12 pull-right">
+                        <div class="sch-info">
+                            <div class="h3 sch-info__title">Rules for the selection of seats and carriage</div>
+                            <ul class="list-reset">
+                                <li>Specify the number of all passengers, including children (preferential tariffs will be taken into account by the system at the step "Cart of orders").</li>
+                                <li>In case seats are not selected, the system will do this automatically. Seat numbers will be known in the cart step.</li>
+                            </ul>
+                        </div>
+                    </div>
+                                        <div class="col-md-9 col-xs-12">
+                        <div class="h3 pass-form__m-title">Fill in the passengers data</div>
+                        <p>Attention! When buying travel documents (tickets) for traveling through the territory of the Republic of Belarus and in international traffic to the CIS countries, the passenger's personal data should be entered according to the identity document on the basis of which the trip will be made (in Cyrillic or Latin), for travel to other countries – in Latin.</p>
+                                                                        <div class="pass-form__check-wrap">
+                            <div class="checkbox">
+                                <label>
+                                    <input class="formstyler js-single-control js-sel-bedding-cb" type="checkbox" name="sel_bedding_agree" value="1">
+                                    <span>
+                                        Pay for the provision of bed linen
+                                                                                <span class="checkbox-caption">The price will include payment for the provision of bed linen for all places where it is provided.</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                                                                        <div class="pass-form__form-wrap">
+                                                                                    <div class="pass-form" tabindex="0">
+                                <div class="pass-form__header">
+                                    <div class="pass-form__title-wrap">
+                                        <div class="h3 pass-form__title">Passenger №1 </div>
+                                    </div>
+                                                                                                                                                                                        <div class="pass-form__tarif">Tariff: <span class='pass-form__tarif-name'>Full (Adult)</span></div>
+                                </div>
+                                <form class="pass-form__form js-height js-pass-form js-pass-form-single" method="POST" action="/en/order/passengers/">
+                                    <fieldset class="fieldset">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12 item">
+                                                <div class="form-group control-group">
+                                                    <label class="form-label js-trg">
+                                                        <div class="name">Last name<span class="f-star">&nbsp;*</span>
+                                                        </div>
+                                                        <div class="text">
+                                                            <input class="form-control js-history js-valid-surname" type="text" name="last_name_1" maxlength="50" spellcheck="true" value="" required="" placeholder="Ivanov" autocomplete="off">
+                                                                                                                        <div class="pass-form__history">
+                                                                <div class="pass-form__history-backdrop"></div>
+                                                                <div class="pass-form__history-list-wrap">
+                                                                    <ul class="list-reset">
+                                                                                                                                                <li>
+                                                                            <a class="pass-form__history-link" href="#" data-passenger="{
+                                                                        &quot;last_name_1&quot;: &quot;IVANOB&quot;,
+                                                                        &quot;first_name_1&quot;: &quot;IVAN&quot;,
+                                                                        &quot;middle_name_1&quot;: &quot;IVANOVICH&quot;,
+                                                                        &quot;gender_1&quot;: &quot;&quot;,
+                                                                        &quot;birthday_1&quot;: &quot;&quot;,
+                                                                        &quot;document_type_1&quot;: &quot;ПБ&quot;,
+                                                                        &quot;document_number_1&quot;: &quot;МР1234567&quot;,
+                                                                        &quot;country_1&quot;: &quot;BLR&quot;,
+                                                                        &quot;passenger_id_1&quot;: &quot;1828930&quot;
+                                                                        }">
+                                                                                <div class="history-left">IVANOB IVAN, <span class='date'></span></div>
+                                                                                <div class="history-right">Passport of a citizen of the Republic of Belarus, МР1234567</div>
+                                                                            </a>
+                                                                        </li>
+                                                                                                                                            </ul>
+                                                                </div>
+                                                            </div>
+                                                                                                                    </div>
+                                                    </label>
+                                                    <div class="controls"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12 item">
+                                                <div class="form-group control-group">
+                                                    <label class="form-label js-trg">
+                                                        <div class="name">First name<span class="f-star">&nbsp;*</span>
+                                                        </div>
+                                                        <div class="text">
+                                                            <input class="form-control js-valid-name" type="text" name="first_name_1" maxlength="50" spellcheck="true" value="" required="" placeholder="Ivan">
+                                                        </div>
+                                                    </label>
+                                                    <div class="controls"></div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="col-md-4 col-sm-6 col-xs-12 item">
+                                                <div class="form-group control-group">
+                                                    <label class="form-label js-trg">
+                                                        <div class="name">Patronymic</div>
+                                                        <div class="text">
+                                                            <input class="form-control js-valid-patronymic" type="text" name="middle_name_1" maxlength="50" spellcheck="true" value="" placeholder="Ivanovich">
+                                                        </div>
+                                                    </label>
+                                                    <div class="pseudo-controls">Required if available</div>
+                                                    <div class="controls"></div>
+                                                </div>
+                                            </div>
+                                                                                                                                                                                <div class="pass-form__field doc-type item">
+                                                <div class="form-group control-group">
+                                                    <label class="form-label js-trg">
+                                                        <div class="name">Document type<span class="f-star">&nbsp;*</span>
+                                                        </div>
+                                                        <div class="text">
+                                                            <select class="form-control formstyler js-doc-type js-valid-doc-type" name="document_type_1" required="">
+                                                                                                                                                                                                <option value="ПБ">Passport of a citizen of the Republic of Belarus</option>
+                                                                                                                                                                                                                                                                <option value="ПН">Passport of a citizen of the Russian Federation</option>
+                                                                                                                                                                                                                                                                <option value="ЗП">Foreign passport of a citizen of the Russian Federation</option>
+                                                                                                                                                                                                                                                                <option value="ЗЗ">Foreign passport</option>
+                                                                                                                                                                                                                                                                <option value="ПМ">Seaman's identity card</option>
+                                                                                                                                                                                                                                                                <option value="СР">Birth certificate for citizens of the Republic of Belarus</option>
+                                                                                                                                                                                                                                                                <option value="ВБ">Military ID</option>
+                                                                                                                                                                                                                                                                <option value="УЛ">Personal ID</option>
+                                                                                                                                                                                                                                                                <option value="СУ">Passport replacement certificate</option>
+                                                                                                                                                                                                                                                                <option value="СО">Discharging certificate</option>
+                                                                                                                                                                                                                                                                <option value="ВЖ">Residence permit</option>
+                                                                                                                                                                                                                                                                <option value="ВУ">Driver's licence</option>
+                                                                                                                                                                                                                                                                <option value="ТТ">Official travel application form</option>
+                                                                                                                                                                                                                                                                <option value="ПУ">Pensioner ID Card</option>
+                                                                                                                                                                                                                                                                <option value="Ф4">Ticket form №4 (for unnumbered seats)</option>
+                                                                                                                                                                                                                                                                <option value="УБ">Refugee certificate</option>
+                                                                                                                                                                                                                                                                <option value="СВ">Certificate of return to the Republic of Belarus</option>
+                                                                                                                                                                                                                                                                <option value="СЖ">Birth certificate for citizens of the Russian Federation</option>
+                                                                                                                                                                                            </select>
+                                                        </div>
+                                                    </label>
+                                                    <div class="controls"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12 item">
+                                                <div class="form-group control-group">
+                                                    <label class="form-label js-trg">
+                                                        <div class="name has-popover">Document number<span class="f-star">&nbsp;*</span><a class="js-popover" href="#" data-title="Document number input format" data-content=""></a>
+                                                        </div>
+                                                        <div class="text">
+                                                            <input class="form-control js-doc-num js-valid-doc-num" type="text" name="document_number_1" maxlength="50" spellcheck="true" value="" required="" placeholder="МР1234567">
+                                                        </div>
+                                                    </label>
+                                                    <div class="controls"></div>
+                                                </div>
+                                            </div>
+                                                                                    </div>
+                                        <div class="pass-form__reset-wrap">
+                                            <button class="reset-btn" type="reset" disabled><span class="lnk-pseudo">Clear the Form</span></button>
+                                        </div>
+                                        <input type="hidden" name="passenger_type_1" value="adult" />
+                                    </fieldset>
+                                    <input type="hidden" name="passenger_id_1" id="passenger_id_1" class="form-control js-doc-num js-valid-doc-num" />
+                                </form>
+                            </div>
+                                                    </div>
+                                                <div class="info-form">
+                            <form class="info-form__form" id="contact-info_form" method="POST" action="/en/order/passengers/">
+                                <div class="info-form__inner">
+                                    <div class="info-form__checkbox">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input class="formstyler info-form__agreement" type="checkbox" value="2" name="agreement"><span>I confirm that with <a href="https://cms.rw.by/upload/order-rules-en.pdf" target="_blank">by rules and features</a> placing an order, paying for it, processing and re-issuing a travel document (ticket), returning an unused travel document (ticket) ordered via the Internet, has been read</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="info-form__btn-wrap">
+                                        <button class="btn btn-default info-form__submit" type="submit" disabled>Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <script>
+                            var WS_RW_APP = WS_RW_APP || {};
+                            WS_RW_APP.lang = WS_RW_APP.lang || {};
+                            WS_RW_APP.lang.InfoMessages = {
+                                'M1': {
+                                    title: {
+                                        text: "Attention!"
+                                    },
+                                    body: {
+                                        text: "Attention! To board the train, you will need to get a travel document at the ticket office of the Belarusian Railways using a 14-digit order number and an identity document.<br>Continue?"
+                                    },
+                                    confirm: {
+                                        text: "Yes"
+                                    },
+                                    reject: {
+                                        text: "No"
+                                    }
+                                },
+                                'M2': {
+                                    title: {
+                                        text: "Attention!"
+                                    },
+                                    body: {
+                                        text: "You can’t issue a ticket at departure station. Issuing of tickets is carried out only on the territory of the Republic of Belarus at a ticket office of the Belarusian Railway. Are you sure you want to purchase the ticket?"
+                                    },
+                                    confirm: {
+                                        text: "Yes"
+                                    },
+                                    reject: {
+                                        text: "No"
+                                    }
+                                },
+                                'M6': {
+                                    title: {
+                                        text: "Attention!"
+                                    },
+                                    body: {
+                                        text: "A passenger who has paid for 2 or more travel documents (up to 4) in his surname can only follow one.<br>Continue?"
+                                    },
+                                    confirm: {
+                                        text: "Yes"
+                                    },
+                                    reject: {
+                                        text: "No"
+                                    }
+                                },
+                                'ONLY_CHILDREN': {
+                                    title: {
+                                        text: "Attention!"
+                                    },
+                                    body: {
+                                        text: "Children under 10 years of age are not allowed to travel unaccompanied.<br>Continue?"
+                                    },
+                                    confirm: {
+                                        text: "Yes"
+                                    },
+                                    reject: {
+                                        text: "No"
+                                    }
+                                }
+                            };
+                            WS_RW_APP.lang.PassengerForm = {
+                                passportDesc: "Two letters and seven numbers",
+                                tenNumbers: "Ten numbers",
+                                nineNumbers: "Nine number",
+                                moreOneSymbol: "More than one character",
+                                chooseDate: "Choose a date",
+                                validChildAge: "The child's age at the time of the trip is over the age limit",
+                                birthCertificatePopover: "<ul><li>Only letters (Latin and Cyrillic) and numbers are allowed.</ul></li>Filling out the document number, the symbol \"№\" is not indicated.",
+                                excludeSymbol: "When entering the number of the identity document, the symbol «№» is not given.",
+                                noWhitespaces: "There should be no spaces at the beginning and end of the field"
+                            };
+
+                            !function () {
+                                'use strict';
+
+                                $(function () {
+                                    WS_RW_APP.Factory('PassengersInfo', {
+                                        block: $('#passengersInfo'),
+                                        isUnnemberedTrain: false,
+                                        commonGender: null,
+                                        placesGenders: [],
+                                        isGlobalRoute: false,
+                                        validationErrors: [],
+                                        infoMessagesQueue: []                                    });
+                                });
+                            }();
+                        </script>
+                    </div>
+                                    </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+
+                            </div>
+        </div>
+        <div id="stationsMap" class="stations-map">
+    <div id="bMapModal" class="stations-map__modal modal fade vertical-center" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="stations-map__modal-dialog modal-dialog">
+            <div class="stations-map__modal-content modal-content">
+                <button class="stations-map__close close" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="stations-map__preloader preloader active">
+                    <div class="preloader__spinner xs"></div>
+                </div>
+                <div class="b-map popup" id="PopupMap">
+                    <div class="map_inner">
+                        <h2 class="stations-map__title">Find station or settlement</h2>
+                        <div class="stations-map__inner">
+                            <div class="stations-map__content">
+                                <a class="stations-map__geo-btn stations-map__geo-btn--mob">
+                                    <i class="stations-map__geo-btn-ic"></i>
+                                    <span>Determine my location</span>
+                                </a>
+                                <form class="map_search stations-map__search-form" action="/">
+                                    <div class="map_field">
+                                        <input class="map_input form-control stations-map__search-input" type="text" id="map_search_form" name="term" placeholder="Enter the name of the station / settlement"/>
+                                    </div>
+                                    <div class="b-btn middle-yellow">
+                                        <button class="btn btn-default" type="submit">Find</button>
+                                    </div><!-- // b-btn -->
+                                </form>
+                                <div class="map_view stations-map__map" id="map4" style="width: 667px; height: 479px"></div>
+                                <div class="stations-map__mob-error">
+                                    <span class="stations-map__error"></span>
+                                </div>
+                            </div>
+                            <div class="stations-map__side">
+                                <a class="stations-map__geo-btn">
+                                    <i class="stations-map__geo-btn-ic"></i>
+                                    <span>Determine my location</span>
+                                </a>
+                                <div class="stations-map__side-inner">
+                                    <span class="stations-map__error"></span>
+                                    <ul class="stations-map__points-list list-reset"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- // b-map -->
+            </div>
+        </div>
+    </div>
+    <script>
+        var WS_RW_APP = WS_RW_APP || {};
+        WS_RW_APP.lang = WS_RW_APP.lang || {};
+        WS_RW_APP.lang.StationsMap = {
+            noPointError: 'Attention! Search only on the territory of the Republic of Belarus!',
+            searchMinChars: 'Please enter at least 3 chars',
+            chooseStation: 'Choose station',
+            noGeolocation: 'Your browser does not support GEO location feature.'
+        };
+
+        !function () {
+            'use strict';
+
+            $(function () {
+                WS_RW_APP.Factory('StationsMap', {
+                    block: $('#stationsMap'),
+                    mapInitScriptUrl: '/apimaps?key=2dbcd492534996d38157ff4c4ef5f302&language=en',
+                    mapProxyHost: '/cgi-bin/proxy.cgi?url=',
+                    backendMap: 'https://georasp.rw.by',
+                    filter: 'gid,by_only,non_multistation',
+                    minSearchValueLength: 3,
+                    mapData: {
+                        urlBase: '/',
+                        helperUtils: '0.1.0.2020-11-22',
+                        backendMap: ['https://georasp.rw.by', 'en']
+                    }
+                });
+            });
+        }();
+    </script>
+</div>
+
+        <footer class="g-footer hide-print">
+<div class="container">
+	<div class="g-footer_i">
+		<div class="row row_x2">
+			<div class="col-md-9 col-sm-12 col-md-push-3">
+				<div class="menu-foot-2 hide-print clearfix">
+					<div class="row row_x2 js-height">
+						<div class="col-sm-4 col-xs-12 item">
+							<ul class="menu_level_1 break-word list-reset js-trg" style="height: 668px;">
+								<li class="item_1"><a href="/en/people_with_disabilities/">Disabled Passenger Support</a> </li>
+								<li class="item_1"><a href="/en/points_of_sale/">Ticket Points</a> </li>
+								<li class="item_1"><a href="/en/tablo/">Online schedule</a> </li>
+								<li class="item_1"><a href="https://pass.rw.by/en/help/tickets/registration/za_kakoe_vremja_mozhno_priobr1.html/">Plan Your Trip</a> </li>
+								<li class="item_1"><a href="/en/actions/">Discounts and special offers</a> </li><li class="item_1"><a href="/en/help/tickets/registration/group_transportation1.html/">Group travel</a></li>
+								 <!--<li class="item_1"><a href="/en/companies/" ><span>Компании-перевозчики</span></a> </li>-->
+							</ul>
+						</div>
+						<div class="col-sm-4 col-xs-12 item">
+							<ul class="menu_level_1 break-word list-reset js-trg" style="height: 668px;">
+								<li class="item_1"><a href="/en/railway_stations/">Train stations</a>
+								<div class="submenu">
+									<ul class="menu_level_2 list-reset">
+										<li class="item_2"><a href="/en/railway_stations/minsk_passenger/">Minsk Pasažyrski </a></li>
+										<li class="item_2"><a href="/en/railway_stations/brest/">Brest Centraĺny</a></li>
+										<li class="item_2"><a href="/en/railway_stations/vitebsk/">Viciebsk</a> </li>
+										<li class="item_2"><a href="/en/railway_stations/gomel/">Homieĺ</a></li>
+										<li class="item_2"><a href="/en/railway_stations/grodno/">Hrodna</a></li>
+										<li class="item_2"><a href="/en/railway_stations/mogilev/">Mahilioŭ</a></li>
+									</ul>
+								</div>
+ </li>
+								 <!--<li class="item_1"><a href="/en/personal/" ><span>Личный кабинет</span></a></li>--> <!--<li class="item_1"><a href="/ru#" ><span>Партнерам</span></a></li>-->
+								<li class="item_1"><a href="/en/dev/">To developers</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-xs-12 item">
+							<ul class="menu_level_1 break-word list-reset js-trg" style="height: 668px;">
+								<li class="item_1"><a href="/en/help/">Reference Information</a>
+								<div class="submenu">
+									<ul class="menu_level_2 list-reset">
+										<li class="item_2"><a href="/en/help/travel-documents-tickets/">Travel documents (tickets)</a> </li>
+										<li class="item_2"><a href="/en/help/transportation_of_baggage/">Carry-on luggage</a> </li>
+										<!--<li class="item_2"><a href="/en/help/transportation-of-luggage/">Luggage, cargo luggage transportation</a> </li>-->
+										<li class="item_2"><a href="/en/help/children_transportation/">Transportation of children</a></li>
+										<li class="item_2"><a href="/en/help/found_things/">Items found</a> </li>
+										<li class="item_2"><a href="/en/help/services_in_trains/">Train Services</a></li>
+										<li class="item_2"><a href="/en/help/e-invoices/">The procedure for obtaining electronic invoices</a></li>
+										<li class="item_2"><a href="pass.rw.by/en/help/tickets/prjamoe_smeshannoe_soobschenie/oformlenie_proezdnih_dokument.html">Direct mixed service (train and bus)</a></li>
+										 <!-- <li class="item_2"><a href="/en/help/procedure-of-crossing-the-state-border/" ><span>О&nbsp;порядке пересечения Государственной границы Республики Беларусь, выезда и&nbsp;нахождения на&nbsp;территории других государств</span></a> </li>
+
+                                                 <li class="item_2"><a href="/en/help/amateur-photos-and-video/" ><span>Порядок проведения любительской фото- видеосъемки при нахождении на&nbsp;объектах железнодорожного транспорта</span></a> </li>
+
+                                                 <li class="item_2"><a href="/en/help/the-list-of-issues/" ><span>Перечень вопросов, по&nbsp;которым возможно обратиться к&nbsp;работникам <span class="nowrap">Контакт-центра</span></span></a> </li>-->
+									</ul>
+								</div>
+ </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-12 col-md-pull-9">
+				<div class="row row_x2">
+					<div class="col-md-12 col-sm-6 col-xs-12">
+						<div class="logo-foot">
+							<div class="logo">
+ <img alt="Belarusian railway" src="https://cms.rw.by/local/templates/.default/img/logo-footer.svg" class="img-responsive" title="Belarusian railway">
+							</div>
+							<div class="title">
+								 Online Ticket Service
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-6 col-xs-12">
+						<div class="foot-search">
+							<form class="search-form" action="/en/search/" method="get">
+								<fieldset class="field">
+ <input class="input" id="headSearch-2" type="search" placeholder="Site search" name="q" maxlength="50" required=""> <label class="submit"> <input name="btn-search" type="submit" value=""> </label>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row row_x2">
+					<div class="col-md-12 col-sm-6 col-xs-12">
+						<div class="contacts-foot-2">
+							<div class="contacts-foot-2__address">
+								 220030, Republic of Belarus, Minsk, st. Lenin, 17
+							</div>
+							<div class="contacts-foot-2__list">
+ <a class="contacts-foot-2__link" href="tel:105"><i class="contacts-foot-2__icon svg-contacts-foot-2_phone"></i><span class="contacts-foot-2__num">105</span>Contact center</a><a class="contacts-foot-2__link" href="tel:151"><i class="contacts-foot-2__icon svg-contacts-foot-2_phone"></i><span class="contacts-foot-2__num">151</span>Passenger Support</a>
+							</div>
+							<div class="contacts-foot-2__apps">
+                                <a href="https://apps.apple.com/us/app/бч-мой-поезд/id1489334970?ls=1" target="_blank"><img alt="App Store" src="https://cms.rw.by/local/templates/.default/img/tmp/contacts-foot-2_appstore_en.svg"></a>
+                                <a href="https://play.google.com/store/apps/details?id=by.rw.client" target="_blank"><img alt="Google Play" src="https://cms.rw.by/local/templates/.default/img/tmp/contacts-foot-2_gplay_en.svg"></a>
+                                <a href="https://appgallery.cloud.huawei.com/ag/n/app/C103446265?channelId=https%3A%2F%2Fpass.rw.by%2Fru%2F&id=66282847d0ea4cd48a4b195751043e4d&s=5900F837F4535D5E7D810B3B8C65CAB5E4CC6478DADE979E3BC1D638D8CE0176&detailType=0&v=" target="_blank"><img alt="App Gallery" src="https://cms.rw.by/local/templates/.default/img/tmp/contacts-foot-2_appgallery_en.svg"></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-6 col-xs-12">
+						<div class="payment">
+							<ul class="list list-reset">
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_01.svg" alt="Visa"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_02.svg" alt="Master Card"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_03.svg" alt="Belcart"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_04.svg" alt="Samsung Pay"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_05.svg" alt="Apple Pay"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_06.png" alt="Raschet"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_07.svg" alt="Belarusbank"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_08.svg" alt="V-BANKING"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_09.svg" alt="MIR"></li>
+                <li class="item"><img src="https://cms.rw.by/local/templates/.default/img/tmp/payment_10.svg" alt="Union Pay"></li>
+							</ul>
+						</div>
+						<div class="menu-foot hide-print clearfix">
+							<ul class="menu_level_1 break-word list-reset">
+								<li class="item_1"><a target="_blank" href="https://www.rw.by/en/">Belarusian Railway Corporate Website</a> </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-small">
+			<div class="row">
+				<div class="col-sm-6 col-xs-12">
+					<div class="logo-foot-2">
+						<div class="title">
+							 © 2023 Belarusian Railway
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="studio">
+						<div class="pic">
+ <img alt="Borovoy Studio" src="https://cms.rw.by/local/templates/.default/img/studio.svg" title="Borovoy Studio">
+						</div>
+						<div class="text-wrap">
+							 Website creation - <a class="link" href="https://www.db.by/" target="_blank">Borovoy Studio</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ </footer>
+        <div class="scroll-to-top"></div>
+        <div class="city">
+    <div class="modal fade" id="cityPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="city__inner">
+                    <div class="city__header">
+                        <div class="city__info">
+                            <div class="h2 city__title">Select a train station</div>
+                        </div>
+                        <button class="close city__close" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="city__body city__index">
+                        <div class="city__list" data-cols-lg="6" data-cols-md="6" data-cols-sm="4" data-cols-xs="3" data-cols-mob="2">
+                            <div class="city__cols">
+                                                                                                            <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100035">Brest Centraĺny</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100001">Minsk Pasažyrski</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100305">Barysaŭ</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100100">Homieĺ</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100090">Kalinkavičy</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100150">Mahilioŭ</a>
+                                                                                    </div>
+                                                                                                                                                <div class="city__item city__item--link">
+                                                                                            <a class="city__link" href="/en/tablo/?set_exp=2100050">Viciebsk</a>
+                                                                                    </div>
+                                                                                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="city city--question">
+    <div class="modal fade" id="cityQuestionPopup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="city__inner">
+                    <div class="city__body city__question">
+                        <div class="h3 city__title">Your station — ?</div>
+                        <div class="city__btn-wrap">
+                            <input class="btn btn-default" type="button" onclick="location.href='/en/tablo/?set_exp='" value="Yes">
+                            <input class="btn btn-link uppercase" type="button" value="No, change" id="city__question__no">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="info-table__link hidden" href="#" data-toggle="modal" data-target="#cityQuestionPopup" id="cityQuestionPopupTrigger"></a>
+        <div class="route-modal modal fade vertical-center" id="route-popup" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-inner"></div>
+                    <div class="modal-error">
+                        <div class="route-modal__header">
+                            <div class="route-modal__caption">
+                                <p class="text-center pt_2">Connection with the server failed. <a class="js-route-modal-more" href="#">Try again</a></p></div>
+                            <button class="close" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="auth-modal modal fade vertical-center" id="auth-popup" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="auth-modal__header">
+                <div class="auth-modal__title h3">Authorization</div>
+                <button class="close close--black" type="button" data-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="auth-modal__body">
+                <div class="auth-modal__notify"></div>
+                                <form class="auth-modal__form" id="form-auth" method="post" action="">
+                    <fieldset class="fieldset">
+                        <div class="form-group control-group">
+                            <label class="form-label">
+                                <div class="name">Login/E-mail</div>
+                                <div class="text">
+                                    <input class="form-control" type="text" name="login" maxlength="50" spellcheck="true" value="" required="" placeholder="">
+                                </div>
+                            </label>
+                            <div class="controls"></div>
+                        </div>
+                        <div class="auth-modal__row">
+                            <div class="auth-modal__inp-wrap">
+                                <div class="form-group control-group">
+                                    <label class="form-label">
+                                        <div class="name">Password</div>
+                                        <div class="text show-password-wrap">
+                                            <input class="form-control" type="password" name="password" maxlength="50" spellcheck="true" value="" required="">
+                                            <button class="show-password" type="button"></button>
+                                        </div>
+                                    </label>
+                                    <div class="controls"></div>
+                                </div>
+                            </div>
+                            <div class="auth-modal__link-wrap"><a class="auth-modal__link" href="/en/registration/pwd_restore/">Forgot your password?</a></div>
+                        </div>
+                        <div class="form-group control-group">
+                            <input class="btn btn-index btn_submit" type="submit" name="dologin" value="Login">
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="auth-modal__social">
+                    <div class="auth-modal__social-title">Sign in with social networks:</div>
+                    <div class="auth-modal__social-list">
+                                                    <a class="auth-modal__social-item auth-modal__social-item--vk" href="http://oauth.vk.com/authorize?client_id=7017287&response_type=code&redirect_uri=https://pass.rw.by/ru/registration/VK/"></a>
+                                                    <a class="auth-modal__social-item auth-modal__social-item--fb" href="https://www.facebook.com/dialog/oauth?client_id=848051612233581&response_type=code&redirect_uri=https://pass.rw.by/ru/registration/FB/"></a>
+                                                    <a class="auth-modal__social-item auth-modal__social-item--ok" href="http://www.odnoklassniki.ru/oauth/authorize?client_id=1279463424&response_type=code&redirect_uri=https://pass.rw.by/ru/registration/OK/"></a>
+                                            </div>
+                </div>
+            </div>
+            <div class="auth-modal__footer">
+                <div class="auth-modal__caption">No account? <a href="/en/registration/">Register</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    !function () {
+        'use strict';
+
+        // Form validation
+        function initValid() {
+            // Validation options http://jqueryvalidation.org/documentation/
+            var form_validator = $('#form-auth');
+            if (form_validator.length && $.fn.validate) {
+                form_validator.validate({
+                    rules: {
+                        'form-LOGIN': {
+                            required: true,
+                            minlength: 2
+                        },
+                        'form-PASSWORD': {
+                            required: true,
+                            minlength: 5
+                        }
+                    }
+                });
+            }
+        }
+
+        $(function () {
+            initValid();
+        });
+    }();
+</script>
+        <div class="help-popup">
+    <div class="help-popup__backdrop"></div>
+    <div class="help-popup__wrap">
+        <div class="help-popup__preloader preloader">
+            <div class="preloader__spinner xs"></div>
+        </div>
+        <div class="help-popup__inner">
+            <div class="help-popup__menu">
+                <nav class="menu-aside-3">
+                    <ul class="menu_level_1 list-reset break-word">
+                        <li class="item_1 panel">
+                            <div class="item-wrap"><span>Help</span></div>
+                            <ul class="menu_level_2 list-reset break-word" id="help-popup-menu-aside-0">
+                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a class="collapse-link collapsed" data-toggle="collapse" data-parent="#help-popup-menu-aside-0" href="#help-popup-menu-aside-0-0">Travel documents (tickets)<span class="icon"></span></a>
+                                                                                            </div>
+                                                                                            <ul class="collapse menu_level_3 list-reset" id="help-popup-menu-aside-0-0">
+                                                                                                                                                                                                                                                                                    <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/registration/">Tickets issuance</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/period_of_validity/">Validity of travel document</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/restoration/">Reissuance of the travel document</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/return/">Return of travel documents</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/renewal/">Renewal of the travel document</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/discounts_and_benefits/">Discounts and benefits</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/elektronnie_proezdnie_dokument/">Electronic travel documents (tickets) </a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/stoimost-edinogo-proezdnogo-dokumenta-gorodskie-linii-i-obshchestvennyy-transport-g-minska/">Entire ticket price</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/tickets/prjamoe_smeshannoe_soobschenie/">Direct mixed service (train and bus)</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/transportation_of_baggage/">Carriage of hand luggage, animals</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/found_things/">Lost and Found Items</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/children_transportation/">Carriage of children</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/services_in_trains/">Train Services</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/procedure-for-amateur-photo-and-video-shooting-at-railway-facilities/">Procedure for amateur photo and video shooting at railway facilities</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/list-of-issues-for-addressing-to-the-contact-center-s-employees/">List of issues for addressing to the contact center's employees</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a href="/en/help/o-poryadke-peresecheniya-gosudarstvennoy-granitsy-respubliki-belarus-vyezda-i-nakhozhdeniya-na-terri/">Border crossing procedure</a>
+                                                                                            </div>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_2 panel">
+                                            <div class="item-wrap">
+                                                                                                    <a class="collapse-link collapsed" data-toggle="collapse" data-parent="#help-popup-menu-aside-0" href="#help-popup-menu-aside-0-17">Trains<span class="icon"></span></a>
+                                                                                            </div>
+                                                                                            <ul class="collapse menu_level_3 list-reset" id="help-popup-menu-aside-0-17">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/trains/types-of-services/">Types of services</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/trains/premium-service-trains/">Branded trains</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/trains/seat-and-bad-arrangement-in-most-common-passenger-carriage-models/">Seat and bad arrangement in most common passenger carriage models</a></div>
+                                                            </li>
+                                                                                                                                                                                                                                <li class="item_3 panel">
+                                                                <div class="item-wrap"><a href="/en/help/trains/carriages-for-the-disabled/">Carriages for the Disabled</a></div>
+                                                            </li>
+                                                                                                                                                            </ul>
+                                                                                    </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li class="item_2 panel special">
+                                    <div class="item-wrap"><a href="/en/help/faq/&filter=topElements">Frequently Asked Questions</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="help-popup__content">
+                <div class="help-popup__content">
+    <div class="help-start">
+        <div class="h3 help-start__m-title">
+            Getting started with help
+        </div>
+        <div class="help-start__list">
+            <div class="help-start__item">
+                <div class="h4 help-start__title">
+                    <span class="num">1.</span><span>Browse a list of frequently asked questions</span><span><i class="help-start__icon svg-help-pointer_01"></i></span>
+                </div>
+                <ul class="list-reset"><li><a href="/en/help/tickets/elektronnie_proezdnie_dokument/pravila_oformlenija_ispol_zova.html">Electronic travel documents (tickets)  for trains with unnumbered seats requirements</a></li><li><a href="/en/help/tickets/restoration/reordering.html">In what cases can a travel document (ticket) be reissued?</a></li><li><a href="/en/help/tickets/registration/kak_chitat_bilet1.html">How to read the information on the tickets?</a></li><li><a href="/en/help/tickets/registration/za_kakoe_vremja_mozhno_priobr1.html">When does the sale of travel documents (tickets) starts?</a></li><li><a href="/en/help/tickets/elektronnie_proezdnie_dokument/how-to-simplify-issuing-of-travel-document-using-the-mobile-application-bc-my-train.html">How to simplify issuing of travel document using the mobile application “BC. My train”</a></li><li><a href="/en/help/trains/what-are-the-conditions-of-travel-in-high-speed-train-lastochka-in-minsk-moscow-direction.html">What are the conditions of travel in high-speed train Lastochka in Minsk-Moscow direction?</a></li><li><a href="/en/help/transportation_of_baggage/pravila_perevozki_velosipedov2.html">Rules for carriage of bikes, excessive hand luggage</a></li><li><a href="/en/help/transportation_of_baggage/transportation-of-dogs-in-city-lines-trains.html">Transportation of dogs in city lines trains</a></li><li><a href="/en/help/children_transportation/uslovija_proezda_detej.html">Carriage of children</a></li><li><a href="/en/help/tickets/return/return_abroad.html">Return of unused travel documents (tickets) for far abroad countries</a></li></ul>
+            </div>
+            <div class="help-start__item">
+                <i class="help-start__icon svg-help-pointer_02"></i>
+                <div class="h4 help-start__title">
+                    <span class="num">2.</span>Use the side help menu
+                </div>
+                <p>
+                    Browse the help sections of the Belarusian Railway service, which are highlighted in the side menu. Headings have nesting (subheadings) for a clearer structuring of information
+                </p>
+            </div>
+            <div class="help-start__item">
+                <div class="h4 help-start__title">
+                    <span class="num">3.</span>Use the search bar
+                </div>
+                <p>
+                    Quick search for informational articles by keywords. For example, <a class="dash" href="/en/search/?q=bicycle">bicycle</a><i class="help-start__icon svg-help-pointer_03"></i>
+                </p>
+                <div class="search-input">
+                    <div class="search-input__wrap">
+                        <div class="search-input__inner">
+                            <form class="search-input__form" action="/en/search/" method="get">
+                                <div class="search-input__form-wrap">
+                                    <input class="search-input__field" id="searchInput" type="search" placeholder="Help Search" name="q" maxlength="50" required="">
+                                    <input type="hidden" name="filter" value="help">
+                                    <input class="btn btn-default search-input__btn" name="btn-search" type="submit" value="Search">
+                                </div>
+                                <input type="hidden" name="filter" value="help">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="help-start__item">
+               <div class="h4 help-start__title"><span class="num">4.</span>Watch videos on working with
+                    service<i class="help-start__icon svg-help-pointer_01"></i></div>
+               <div class="video-help">
+                   <div class="video-help__item"><a class="video-help__inner" href="#">
+                           <div class="video-help__pic"><img src="../img/tmp/help-placeholder-80x50.png" alt="Buying train tickets online"
+                                                             title="title"></div>
+                           <div class="video-help__text">Buying train tickets online</div>
+                       </a></div>
+                   <div class="video-help__item"><a class="video-help__inner" href="#">
+                           <div class="video-help__pic"><img src="../img/tmp/help-placeholder-80x50.png" alt="Use of the baggage calculator"
+                                                             title="title"></div>
+                           <div class="video-help__text">Use of the baggage calculator</div>
+                       </a></div>
+                   <div class="video-help__item"><a class="video-help__inner" href="#">
+                           <div class="video-help__pic"><img src="../img/tmp/help-placeholder-80x50.png" alt="Overview of personal account features"
+                                                             title="title"></div>
+                           <div class="video-help__text">Overview of personal account features</div>
+                       </a></div>
+                   <div class="video-help__item"><a class="video-help__inner" href="#">
+                           <div class="video-help__pic"><img src="../img/tmp/help-placeholder-80x50.png" alt="View online scoreboard"
+                                                             title="title"></div>
+                           <div class="video-help__text">View online scoreboard</div>
+                       </a></div>
+               </div>
+           </div>-->
+            <div class="help-start__item">
+                <div class="h4 help-start__title">
+                    <span class="num">4.</span>Contact the Belarusian Railway Contact Center
+                </div>
+                <p>
+                    If you could not find the information you need in the certificate, <a class="dash" href="#modal-feedback" data-target="#modal-feedback" data-toggle="modal">write</a>&nbsp;email or call&nbsp;number <span class="nowrap"><span style="color:#065da5; font-weight:bold;">105</span>  <img alt="beltelecom" src="/uploads/medialibrary/011/beltelekom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"> <img alt="mts" src="/uploads/medialibrary/5c3/MTS_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp; <img alt="velcom" src="/uploads/medialibrary/091/velkom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp; <img alt="life" src="/uploads/medialibrary/efa/layf_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"></span>
+                </p>
+                <ul>
+                    <li>Booking tickets by phone <span class="nowrap">105&nbsp;<img alt="beltelecom" src="/uploads/medialibrary/011/beltelekom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="mts" src="/uploads/medialibrary/5c3/MTS_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="velcom" src="/uploads/medialibrary/091/velkom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="life" src="/uploads/medialibrary/efa/layf_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"></span> (24h/7).</li>
+                    <li>Belarusian Railways Passenger Support Service by calling <span class="nowrap">151&nbsp;<img alt="beltelecom" src="/uploads/medialibrary/011/beltelekom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="mts" src="/uploads/medialibrary/5c3/MTS_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="velcom" src="/uploads/medialibrary/091/velkom_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">&nbsp;<img alt="life" src="/uploads/medialibrary/efa/layf_b.png" class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"></span> (24h/7), e-mail <a href="mailto:brail@rw.by">brail@rw.by</a></li>
+                    <li><span style="margin-right: 4px;">Service information for people with hearing loss</span> <img class="help-start__contact-icon" src="https://cms.rw.by/upload/medialibrary/f35/help_start_skype.png" alt="skype">&nbsp;<a href="skype:live:9191-belog?call">Minsk</a>, <a href="skype:live:grodno9191?call">Hrodna</a>, <a href="skype:live:85ae74bcf284695f">Homieĺ</a></li>
+                    <li>Service information for people travelling abroad, by phone <a href="tel:+375222392547">(+375 222) 39 25 47</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var WS_RW_APP = WS_RW_APP || {};
+    WS_RW_APP.lang = WS_RW_APP.lang || {};
+    WS_RW_APP.lang.HelpArticle = {
+        openUrl: "Open in new tab",
+        isArticleHelpful: "Is article useful?",
+        yes: "Yes",
+        no: "No",
+        kb: "Kb",
+        mb: "Mb",
+        peoplesRating: "users find this article helpful",
+        errorTitle: "Information is not available, try to retry the query",
+        repeatRequest: "Retry request"
+    };
+    WS_RW_APP.lang.HelpRating = {
+        thanksForVoting: "Thanks for your feedback!",
+        specify: "Ask why"
+    };
+
+    !function () {
+        'use strict';
+
+        $(function () {
+            WS_RW_APP.Factory('HelpPopup', {
+                block: $('.help-popup'),
+                voteUrl: "https://cms1.rw.by/local/include/en/help.php?login=test&pass=test&internal_call=1",
+                noBenefitReasons: [
+                    {
+                        title: "No answer to my question",
+                        id: '1'
+                    },
+                    {
+                        title: "I don’t like how it works",
+                        id: '2'
+                    },
+                    {
+                        title: "Recommendations didn't help",
+                        id: '3'
+                    },
+                    {
+                        title: "The content of the article does not match the title",
+                        id: '4'
+                    },
+                    {
+                        title: "Text is difficult to understand",
+                        id: '5'
+                    },
+                    {
+                        title: "Other reason",
+                        id: '6'
+                    }
+                ]
+            });
+        });
+    }();
+</script>
+
+                        <div class="modal-feedback modal fade vertical-center" id="modal-feedback" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="min-height:200px;">
+            <div class="preloader" id="preloader-feedback">
+                <div class="preloader__spinner xs"></div>
+            </div>
+            <div class="modal-start">
+                <div class="modal-header">
+                    <button class="close close--black" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                    <div class="h3 modal-title">Feedback about the service</div>
+                </div>
+                <div class="modal-body">
+                    <form id="form-feedback" method="post" action="" enctype="multipart/form-data">
+                        <fieldset class="fieldset">
+                            <div class="form-group control-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <label class="form-label" for="feedback_subject">
+                                            <div class="name">Subject<span class="f-star">&nbsp;*</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div class="text">
+                                            <select class="form-control formstyler" id="feedback_subject" name="subject" required="">
+                                                                                                    <option value="" selected="selected" disabled="disabled">Choose</option>
+                                                                                                    <option value="feedback">Feedback</option>
+                                                                                                    <option value="recommendation">Recommendation</option>
+                                                                                            </select>
+                                        </div>
+                                        <div class="controls"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group control-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <label class="form-label" for="feedback_name">
+                                            <div class="name">Your name<span class="f-star">&nbsp;*</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div class="text">
+                                            <input class="form-control" id="feedback_name" type="text" name="name" value="" required="">
+                                        </div>
+                                        <div class="controls"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group control-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <label class="form-label" for="feedback_message">
+                                            <div class="name">Your message<span class="f-star">&nbsp;*</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div class="text">
+                                            <textarea class="form-control" id="feedback_message" name="message" cols="60" rows="4" spellcheck="true" required=""></textarea>
+                                        </div>
+                                        <div class="controls"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group control-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <label class="form-label" for="feedback_contact">
+                                            <div class="name">Email<span class="f-star">&nbsp;*</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div class="text">
+                                            <input class="form-control" id="feedback_contact" type="email" name="contacts" value="" required="">
+                                        </div>
+                                        <div class="controls"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group control-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <label class="form-label" for="feedback_contact">
+                                            <div class="name">Attach a file</div>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div class="text file-wrap">
+                                            <input class="form-control formstyler" id="feedback_file" type="file" name="file" value="">
+                                            <label class="no-attachments" id="feedback_file_name" for="feedback_file">File not found</label>
+                                            <label class="file-chooser btn btn-default" id="feedback_file_label" for="feedback_file">Search...</label>
+                                        </div>
+                                        <div class="controls"></div>
+                                        <div class="help-block">Attention! File formats are allowed for attachments: doc, docx, pdf, jpg, txt. The size of the attached file cannot exceed 3 MB.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-8 col-xs-offset-0 col-md-offset-4">
+                                        <input class="btn btn-default btn_submit" type="submit" name="feedback_submit" value="Send feedback"><br>
+                                        <div class="form_required"><span class="f-star">&nbsp;*</span> — Required Fields
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="hidden">
+                            <input type="text" name="field_1" value="" />
+                            <input type="text" name="field_2" value="445DD124-EBB6-4ad2-802C-0C5BEFF64A95" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-success" style="display: none;">
+                <div class="modal-header">
+                    <button class="close close--black" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                    <div class="h3 modal-title">The feedback has been sent</div>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you! It helps us to make our web schedule better.</p>
+                    <div class="btn-wrap">
+                        <a class="btn btn-default js-try-more" href="#">Send again</a>
+                        <button class="btn btn-link" type="button" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-error" style="display: none;">
+                <div class="modal-header">
+                    <button class="close close--black" type="button" data-dismiss="modal" aria-hidden="true"></button>
+                    <div class="h3 modal-title">Error</div>
+                </div>
+                <div class="modal-body">
+                    <p>An error occurred while sending</p>
+                    <div class="btn-wrap">
+                        <a class="btn btn-default js-try-more" href="#">Send again</a>
+                        <button class="btn btn-link" type="button" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    !function () {
+        'use strict';
+
+        function initValid() {
+            // Validation options http://jqueryvalidation.org/documentation/
+            var form_validator = $('#form-feedback');
+            if (form_validator.length && $.fn.validate) {
+                var preloader = $('#preloader-feedback');
+                var modal = $('#modal-feedback');
+                var start = modal.find('.modal-start');
+                var success = modal.find('.modal-success');
+                var error = modal.find('.modal-error');
+
+                start.show();
+                success.hide();
+                error.hide();
+
+                form_validator.validate({
+                    rules: {
+                        'subject': {
+                            required: true
+                        },
+                        'name': {
+                            required: true
+                        },
+                        'message': {
+                            required: true
+                        },
+                        'contact': {
+                            required: true,
+                            email: true
+                        },
+                        'file': {
+                            maxsize: 3145728, // 3 MB in bytes
+                            extension: 'doc|docx|pdf|jpg|txt'
+                        }
+                    }/*,
+                    submitHandler: function (form) {
+                        _showPreloader(preloader);
+                        $.ajax({
+                            type: 'GET',
+                            data: $(form).serialize(),
+                            url: '/media/html/ajax-form-feedback.json',
+                            success: function (data) {
+                                if (data.status !== undefined && data.status === 'success') {
+                                    start.slideUp();
+                                    success.slideDown();
+                                    error.hide();
+                                } else {
+                                    console.error(data);
+                                    start.slideUp();
+                                    success.hide();
+                                    error.slideDown();
+                                }
+                                _hidePreloader(preloader);
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                start.slideUp();
+                                success.hide();
+                                error.slideDown();
+                                _hidePreloader(preloader);
+                            }
+                        });
+                    }*/
+                });
+
+                var tryMore = $('.js-try-more');
+                if (tryMore.length) {
+                    tryMore.each(function() {
+                        var self = $(this);
+                        self.off('click.ws').on('click.ws', function(e) {
+                            e.preventDefault();
+                            form_validator.trigger('reset');
+                            start.slideDown();
+                            success.slideUp();
+                            error.slideUp();
+                        });
+                    });
+                }
+            }
+        }
+
+        $(function () {
+            initValid();
+        });
+    }();
+</script>
+    </div>
+    <div id="root-preloader" class="preloader"><div class="preloader__spinner xs"></div></div>
+            <a class="webim_button" href="#" rel="webim">
+            <img src="https://railwaymogilevby.webim.ru/button.php" border="0"/>
+        </a>
+        <script>
+            !function () {
+                'use strict';
+                $(window).on('load', function () {
+                    window.webim = {
+                        accountName: "railwaymogilevby",
+                        domain: "railwaymogilevby.webim.ru",
+                        location: "default"
+                    };
+                    var s = document.createElement("script");
+                    s.type = "text/javascript";
+                    s.src = "https://railwaymogilevby.webim.ru/js/button.js";
+                    document.getElementsByTagName("head")[0].appendChild(s);
+                });
+            }();
+        </script>
+        <div class="modal fade vertical-center" id="questModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+                <div class="h2 title">Задать вопрос</div>
+                <form class="form-horizontal" id="form-quest" method="post" action="/">
+                    <fieldset class="fieldset">
+                        <!-- row-->
+                        <div class="form-group control-group">
+                            <label class="name label-pt col-lg-3 col-sm-3 col-xs-12" for="form-NAME-q">Ваше имя<span class="f-star">&nbsp;*</span>
+                            </label>
+                            <div class="text col-lg-6 col-sm-5 col-xs-12">
+                                <input class="form-control" id="form-NAME-q" type="text" name="form-NAME-q" maxlength="50" spellcheck="true" value="" required="">
+                            </div>
+                            <div class="controls col-lg-3 col-sm-4 col-xs-12"></div>
+                        </div>
+                        <!-- row-->
+                        <div class="form-group control-group">
+                            <label class="name label-pt col-lg-3 col-sm-3 col-xs-12" for="form-PHONE-q">Телефон<span class="f-star">&nbsp;*</span>
+                            </label>
+                            <div class="text col-lg-6 col-sm-5 col-xs-12">
+                                <input class="form-control" id="form-PHONE-q" type="tel" name="form-PHONE-q" maxlength="50" spellcheck="true" required="">
+                                <p class="help-block">Например: +375 (29) 123-45-67</p>
+                            </div>
+                            <div class="controls col-lg-3 col-sm-4 col-xs-12"></div>
+                        </div>
+                        <!-- row-->
+                        <div class="form-group control-group">
+                            <label class="name label-pt col-lg-3 col-sm-3 col-xs-12" for="form-MAIL-q">Эл. почта<span class="f-star">&nbsp;*</span>
+                            </label>
+                            <div class="text col-lg-6 col-sm-5 col-xs-12">
+                                <input class="form-control" id="form-MAIL-q" type="email" name="form-EMAIL-q" maxlength="50" spellcheck="true" value="" placeholder="email@example.com" required="">
+                            </div>
+                            <div class="controls col-lg-3 col-sm-4 col-xs-12"></div>
+                        </div>
+                        <!-- row-->
+                        <div class="form-group control-group">
+                            <label class="name label-pt col-lg-3 col-sm-3 col-xs-12" for="form-MESSAGE-q">Вопрос<span class="f-star">&nbsp;*</span>
+                            </label>
+                            <div class="text col-lg-6 col-sm-5 col-xs-12">
+                                <textarea class="form-control" id="form-MESSAGE-q" name="form-MESSAGE-q" maxlength="500" cols="60" rows="4" spellcheck="true" required=""></textarea>
+                            </div>
+                            <div class="controls col-lg-3 col-sm-4 col-xs-12"></div>
+                        </div>
+                        <!-- row-->
+                        <div class="form-group">
+                            <div class="col-xs-12 col-xs-offset-0 col-sm-offset-3">
+                                <input class="btn btn-default btn_submit" type="submit" name="submit" value="Отправить">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <script>
+                    !function () {
+                        'use strict';
+
+                        // Form validation
+                        function initQuestValid() {
+                            // Validation options http://jqueryvalidation.org/documentation/
+                            var form_validator = $('#form-quest');
+                            if (form_validator.length && $.fn.validate) {
+                                form_validator.validate({
+                                    rules: {
+                                        'form-NAME-q': {
+                                            required: true,
+                                            minlength: 4
+                                        },
+                                        'form-PHONE-q': {
+                                            required: true,
+                                            minlength: 4
+                                        },
+                                        'form-MAIL-q': {
+                                            required: true,
+                                            minlength: 4
+                                        },
+                                        'form-MESSAGE-q': {
+                                            required: true,
+                                            minlength: 10
+                                        }
+                                    }
+                                });
+                            }
+                        }
+
+                        $(function () {
+                            initQuestValid();
+                        });
+                    }();
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="pm">
+    <div class="pm-backdrop"></div>
+    <div class="pm-wrap">
+        <div class="hamburger-closer">
+            <div class="pm-closer closed"></div>
+        </div>
+        <div class="pm-inner">
+            <div class="mob-search">
+                <div class="wrap">
+                    <form class="search-form" action="/en/search/" method="get">
+                        <div class="form-wrap">
+                            <input class="field" id="mobSearch" type="search" placeholder="Site search" name="q" maxlength="50" required="">
+                            <button class="btn-search" type="submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="menu-mob">
+                <ul class="menu_level_1 list-reset break-word">
+                    <li class="item_1">
+                        <a href="/en/tablo/">
+                            <span>Online scoreboard</span>
+                        </a>
+                    </li>
+                        <li class="item_1">
+                        <a href="/en/people_with_disabilities/">
+                            <span>Disabled Passenger Support</span>
+                        </a>
+                    </li>
+                    <li class="item_1">
+                        <a href="/en/help/">
+                            <span>Reference</span>
+                        </a>
+                            <a class="icon collapsed" data-toggle="collapse" href="#accordion-m-55"></a>
+    <div class="collapse submenu" id="accordion-m-55">
+        <ul class="menu_level_2 list-reset">
+                            <li class="item_2">
+                    <a href="/en/help/tickets/"><span>Travel documents (tickets)</span></a>
+                                            <a class="icon collapsed" data-toggle="collapse" href="#accordion-m-169"></a>
+                        <div class="submenu collapse" id="accordion-m-169">
+                            <ul class="menu_level_3 list-reset">
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/registration/"><span>Tickets issuance</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/period_of_validity/"><span>Validity of travel document</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/restoration/"><span>Reissuance of the travel document</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/return/"><span>Return of travel documents</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/renewal/"><span>Renewal of the travel document</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/discounts_and_benefits/"><span>Discounts and benefits</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/elektronnie_proezdnie_dokument/"><span>Electronic travel documents (tickets) </span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/stoimost-edinogo-proezdnogo-dokumenta-gorodskie-linii-i-obshchestvennyy-transport-g-minska/"><span>Entire ticket price</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/tickets/prjamoe_smeshannoe_soobschenie/"><span>Direct mixed service (train and bus)</span></a>
+                                                                            </li>
+                                                            </ul>
+                        </div>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/transportation_of_baggage/"><span>Carriage of hand luggage, animals</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/found_things/"><span>Lost and Found Items</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/children_transportation/"><span>Carriage of children</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/services_in_trains/"><span>Train Services</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/procedure-for-amateur-photo-and-video-shooting-at-railway-facilities/"><span>Procedure for amateur photo and video shooting at railway facilities</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/list-of-issues-for-addressing-to-the-contact-center-s-employees/"><span>List of issues for addressing to the contact center's employees</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/o-poryadke-peresecheniya-gosudarstvennoy-granitsy-respubliki-belarus-vyezda-i-nakhozhdeniya-na-terri/"><span>Border crossing procedure</span></a>
+                                    </li>
+                            <li class="item_2">
+                    <a href="/en/help/trains/"><span>Trains</span></a>
+                                            <a class="icon collapsed" data-toggle="collapse" href="#accordion-m-263"></a>
+                        <div class="submenu collapse" id="accordion-m-263">
+                            <ul class="menu_level_3 list-reset">
+                                                                    <li class="item_3">
+                                        <a href="/en/help/trains/types-of-services/"><span>Types of services</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/trains/premium-service-trains/"><span>Branded trains</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/trains/seat-and-bad-arrangement-in-most-common-passenger-carriage-models/"><span>Seat and bad arrangement in most common passenger carriage models</span></a>
+                                                                            </li>
+                                                                    <li class="item_3">
+                                        <a href="/en/help/trains/carriages-for-the-disabled/"><span>Carriages for the Disabled</span></a>
+                                                                            </li>
+                                                            </ul>
+                        </div>
+                                    </li>
+                    </ul>
+    </div>
+
+                    </li>
+                    <li class="item_1">
+                        <a href="/en/points_of_sale/">
+                            <span>Ticket Points</span>
+                        </a>
+                    </li>
+                    <li class="item_1">
+                        <a href="/en/actions/">
+                            <span>Discounts and special offers</span>
+                        </a>
+                    </li>
+                    <li class="item_1">
+                        <a href="/en/railway_stations/">
+                            <span>Train stations</span>
+                        </a>
+                            <a class="icon collapsed" data-toggle="collapse" href="#accordion-m-27"></a>
+    <div class="collapse submenu" id="accordion-m-27">
+        <ul class="menu_level_2 list-reset">
+                            <li class="item_2">
+                    <a href="/en/railway_stations/minsk_passenger/"><span>Minsk Pasažyrski Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/vitebsk/"><span>Viciebsk Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/gomel/"><span>Homieĺ Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/mogilev/"><span>Mahilioŭ Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/brest/"><span>Brest Centraĺny Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/grodno/"><span>Hrodna Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/polotsk/"><span>Polack Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/lida/"><span>Lida Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/molodechno/"><span>Maladziečna Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/orsha/"><span>Orša Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/borisov/"><span>Barysaŭ Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/baranovichi/"><span>Baranavičy Palieskija Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/pinsk/"><span>Pinsk Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/osipovichi/"><span>Asipovičy Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/railway_station_krichev/"><span>Kryčaŭ Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/luninets/"><span>Luniniec Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/bobruisk/"><span>Babrujsk Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/zhlobin/"><span>Žlobin Railway Station</span></a>
+                </li>
+                            <li class="item_2">
+                    <a href="/en/railway_stations/kalinkovichi/"><span>Kalinkavičy Railway Station</span></a>
+                </li>
+                    </ul>
+    </div>
+                    </li>
+                                        <li class="item_1">
+                        <a href="/en/dev/">
+                            <span>To developers</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="mob-profile">
+                <div class="mob-profile__name-wrap">
+                    <a class="mob-profile__name" href="/en/personal/">Личный кабинет</a>
+                </div>
+                <div class="mob-profile__btn-wrap">
+                    <a class="btn btn-default" href="#" data-toggle="modal" data-target="#auth-popup">Войти</a>
+                </div>
+            </div>
+            <div class="head-city-mob">
+                <div class="head-city-mob__wrap"><a class="head-city-mob__item" href="#cityPopup" data-toggle="modal" data-target="#cityPopup">Минск</a></div>
+            </div>-->
+            <div class="contacts-mob-4 mt_1">
+                <div class="contacts-mob-4__wrap">
+                    <a class="contacts-mob-4__item contacts-mob-4__item--tel" href="tel:105"><span class="contacts-mob-4__number">105</span> (Contact center)</a>
+                    <div class="contacts-mob-4__icons-list">
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="beltelecom" src="https://cms.rw.by/upload/medialibrary/011/beltelekom_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="mts" src="https://cms.rw.by/upload/medialibrary/5c3/MTS_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="velcom" src="https://cms.rw.by/upload/medialibrary/091/velkom_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="life" src="https://cms.rw.by/upload/medialibrary/efa/layf_b.png"></div>
+                    </div>
+                </div>
+                <div class="contacts-mob-4__wrap">
+                    <a class="contacts-mob-4__item contacts-mob-4__item--tel" href="tel:151"><span class="contacts-mob-4__number">151</span> (Passenger Support)</a>
+                    <div class="contacts-mob-4__icons-list">
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="beltelecom" src="https://cms.rw.by/upload/medialibrary/011/beltelekom_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="mts" src="https://cms.rw.by/upload/medialibrary/5c3/MTS_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="velcom" src="https://cms.rw.by/upload/medialibrary/091/velkom_b.png"></div>
+                        <div class="contacts-mob-4__icon-item"><img class="contacts-mob-4__icon" alt="life" src="https://cms.rw.by/upload/medialibrary/efa/layf_b.png"></div>
+                    </div>
+                </div>
+                <div class="contacts-mob-4__wrap">
+                    <div class="contacts-mob-4__item">Service information for people with hearing loss <img class="contacts-mob-4__contact-icon" src="https://cms.rw.by/upload/medialibrary/f35/help_start_skype.png" alt="skype">&nbsp;<a href="skype:live:9191-belog?call">Minsk</a>, <a href="skype:live:grodno9191?call">Hrodna</a>, <a href="skype:live:85ae74bcf284695f">Homieĺ</a></div>
+                </div>
+                <div class="contacts-mob-4__wrap">
+                    <div class="contacts-mob-4__item">Service information for people travelling abroad, by phone <a href="tel:+375222392547">(+375&nbsp;222)&nbsp;39&nbsp;25&nbsp;47</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "address": {
+    "@type": "PostalAddress",
+     "addressLocality": "Минск, Беларусь",
+    "streetAddress": "ул. Ленина,17"
+  },
+  "name": "Белорусская железная дорога",
+  "telephone": "105"
+}
+</script>
+</body>
+</html>
