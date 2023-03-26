@@ -3,6 +3,8 @@ STATION = {
   pinsk: '2100180'
 }
 
+$date = Date.today + 1
+
 # set guid, logged_token, session, logged_time, lang headers to global variables
 def set_headers_from_response(response, user)
   response['set-cookie'].split('; ').map do |cookie|
@@ -11,9 +13,11 @@ def set_headers_from_response(response, user)
 
     cookie_arr = cookie.split("=")
 
+    next if cookie_arr[-1] == 'deleted'
+
     case cookie_arr[0]
       when 'logged_token'
-        user.logged_token ||= cookie_arr[-1] if cookie_arr[-1] != 'deleted'
+        user.logged_token ||= cookie_arr[-1]
       when 'logged_fname'
         user.logged_fname ||= cookie_arr[-1]
       when 'logged_lname'
@@ -34,8 +38,15 @@ end
 
 # smth wrong with guid
 def set_guid(request, user)
-  request["Cookie"] += " guid=6f9a682d7926db8088b7b2ad5a8bbef86fb5a096%7E521f00711e9ec88873b203a560781453"
-  #request["Cookie"] += " guid=#{user.guid}"
+  request["Cookie"] += " guid=#{user.guid}"
+end
+
+def set_date
+  $date.to_s
+end
+
+def set_date_time
+  DateTime.new($date.year, $date.month, $date.day, 19, 52).to_time.to_i
 end
 
 # Add common headers and return request object
@@ -151,7 +162,7 @@ def form_data_for_passangers_request(free_places_hash, second)
     places_cost: 20.18,
     car_places: free_places_hash, 
     car_details: second,
-    car_type: 7,
+    car_type: 13,
     car_number: car["number"],
     is_gender_coupe: false,
     sale_on_two: false,

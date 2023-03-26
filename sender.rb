@@ -4,7 +4,7 @@ def send_request_for_session_token(user)
   request = Net::HTTP::Get.new(uri)
 
   response = send_req(uri, request)
-  add_headers_to_request(response, user)
+  set_headers_from_response(response, user)
 end
 
 # Login post request
@@ -18,20 +18,7 @@ def send_first_post_request(user)
   add_headers_to_request(request, user)
 
   response = send_req(uri, request)
-  add_headers_to_request(response, user)
-end
-
-# Login get http request, I don’t know why I’m sending it, but for clarity I’ll do it
-def send_second_get_req(user)
-  uri = URI.parse("https://pass.rw.by/en/")
-  request = Net::HTTP::Get.new(uri)
-
-  add_headers_to_request(request, user)
-
-  # I didn't call send_req here, cause here we need to use http instead of https
-  response = Net::HTTP.start(uri.hostname, uri.port) do |http|
-    http.request(request)
-  end
+  set_headers_from_response(response, user)
 end
 
 # Login get https request, return to us logged_time header
@@ -47,7 +34,7 @@ end
 
 # returns long params string about your route and free_seats(an example can be seen at the end of the method)
 def get_route_params(user)
-  choose_route_link = "https://pass.rw.by/en/route/?from=Minsk+Pasa%C5%BEyrski&from_exp=#{STATION[:minsk]}&from_esr=&to=Pinsk&to_exp=#{STATION[:pinsk]}&to_esr=133202&front_date=#{Date.today.to_s}&date=#{Date.today.to_s}"
+  choose_route_link = "https://pass.rw.by/en/route/?from=Minsk+Pasa%C5%BEyrski&from_exp=#{STATION[:minsk]}&from_esr=&to=Pinsk&to_exp=#{STATION[:pinsk]}&to_esr=133202&front_date=#{set_date}&date=#{set_date}"
   uri = URI.parse(choose_route_link)
   request = Net::HTTP::Get.new(uri)
 
@@ -63,7 +50,6 @@ def get_route_params(user)
   attrs = product.xpath('//input[starts-with(@class, "js-sch-item-route")]')
   # add check, if attrs.attr("value").value returns error => maybe it cant find free seats, or smth wrong with rw.by
   return nil unless attrs
-
   attrs.attr("value").value
 end
 
@@ -73,7 +59,6 @@ def send_request_for_guid(params_for_request, user)
   request = Net::HTTP::Post.new(uri)
 
   add_headers_to_request(request, user)
-  p params_for_request
   request.set_form_data({:route => params_for_request})
 
   response = send_req(uri, request)
@@ -84,23 +69,19 @@ end
 
 # returns the train info and emptyPlaces
 def send_ajax_req_for_free_places_hash(user)
-  uri = URI.parse("https://pass.rw.by/en/ajax/route/car_places/?from=#{STATION[:minsk]}&to=#{STATION[:pinsk]}&date=#{Date.today.to_s}&train_number=657%D0%91&car_type=#{user.car_type}&from_time=#{DateTime.new(Date.today.year, Date.today.month, Date.today.day, 22, 52).to_time.to_i}&_=#{Time.now.to_i}")
+  choose_type_of_carriage_link = "https://pass.rw.by/en/ajax/route/car_places/?from=#{STATION[:minsk]}&to=#{STATION[:pinsk]}&date=#{set_date}&train_number=657%D0%91&car_type=4&from_time=#{set_date_time}&_=#{Time.now.to_i.to_s + '000'}"
+  uri = URI.parse(choose_type_of_carriage_link)
   request = Net::HTTP::Get.new(uri)
-  request.content_type = "application/json"
 
   add_headers_to_request(request, user, add_addtl_headers: true)
+  set_guid(request, user)
 
   response = send_req(uri, request)
-
   set_headers_from_response(response, user)
   begin
     JSON.parse(response.body)
   rescue JSON::ParserError
     puts 'smth goes wrong with parsing: 98 line sender'
-    # p response
-    # p response.body
-    # p resonse["Set-Cookie"]
-    # p JSON.parse(response.body)
     exit
   end
 
@@ -127,10 +108,12 @@ end
 
 # returns the location of seats in the train by pixels
 def send_ajax_req_for_train_pixels(free_places_hash, user)
-  uri = URI.parse("https://pass.rw.by/en/ajax/sppd4/v1/carriages/graphic/?user_key=c11f8d06e3e1594815b9c4ebaddf19a0")
+  uri = URI.parse("https://pass.rw.by/ru/ajax/sppd4/v1/carriages/graphic/?user_key=c11f8d06e3e1594815b9c4ebaddf19a0")
   request = Net::HTTP::Post.new(uri)
+  request.content_type = "application/json"
 
   add_headers_to_request(request, user, add_addtl_headers: true)
+  set_guid(request, user)
   request.body = form_second_ajax_request_params(free_places_hash)
 
   response = send_req(uri, request)
@@ -139,29 +122,29 @@ def send_ajax_req_for_train_pixels(free_places_hash, user)
   JSON.parse(response.body)[0]
 end 
 
-# Send all info about train, seats and your seat
-
-# TODO: They send me the wrong guid, so this request doesnt work
-def send_request_with_seat_info(free_places_hash, second_ajax_resp, user)
-  uri = URI.parse("https://pass.rw.by/en/order/passengers/")
-  request = Net::HTTP::Post.new(uri)
-
-  add_headers_to_request(request, user, add_addtl_headers: true)
-
-  set_guid(request, user)
-
-  request.body = form_data_for_passangers_request(free_places_hash, second_ajax_resp)
-
-  response = send_req(uri, request)
-  set_headers_from_response(response, user)
-end
-
 # Send last request with user info(first-middle-last names, passport data, etc)
 def send_passanger_info(user)
   uri = URI.parse("https://pass.rw.by/en/order/passengers/")
   request = Net::HTTP::Post.new(uri)
 
   add_headers_to_request(request, user)
+  request.content_type = "application/x-www-form-urlencoded"
+  request["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+  request["Accept-Language"] = "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+  request["Cache-Control"] = "max-age=0"
+  request["Connection"] = "keep-alive"
+  request["Cookie"] = "session=p1ttnvi4ruej670sbscccvkgi3; lang=d7872ba484be80990fec033c2dfa421ab6fc6904%7Eru; logged_fname=cda987d764c8792a70009ba9436804063e8c771b%7Etupoe; logged_lname=65be0bd8e26993aad3cc7c106776e52ace06ea5e%7Eeblo; logged_email=ec972264f8066b9fc0086426f70cf8b331092a15%7Eeblo-tupoe1488%40mail.ru; logged_token=4553993c59f951d43175160d27a0f6ab1630d7d7%7EeyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwidXNlciI6eyJpZCI6MTQ5MjYxOSwiZW1haWwiOiJlYmxvLXR1cG9lMTQ4OEBtYWlsLnJ1IiwibGFuZ3VhZ2UiOiJydSJ9LCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX1UifV0sImlhdCI6MTY3OTg2NTIyMywiZXhwIjoxNjgwNzI5MjIzfQ.iwO9kybhO9q7MCDJnxHw7wlHyK7Iv-BnIvPPyVaThu_Z70R0RaWmossMB_W--YrSQdzhvl8c00qxuhuCna4-ouX0h41vlcOfBcCe_GmhrO517oOGtBL3dLcnVLFGnoWyIY5-4ORy9IROAysowLYKpFeZ7afad4B39V_KCMHMHsQAyXIuLTd1QCSMBxWSS99_zPYfrU0qey9s_ybLWfd1hhMLGgN8XKab2VA2lKSxC9vQbZj92I81kpLQrWP5aEzo6BJlyuezdKbBEC9Y1UpUHIcnvdZwykpgTD-sO-ZKOjeC5QonXrzaCMkH1p1VQVfLfOMMafyWbzu5j9QQ-Il1eg; guid=0a6408b87c007d9e25e8ed8066c92976805e991d%7E044480b8f020bae95f894f80d707fee2; logged_time=4224789718f5fab767b8a49a48e3d8db6320306c%7E1679867477"
+  request["Origin"] = "https://pass.rw.by"
+  request["Referer"] = "https://pass.rw.by/ru/order/passengers/"
+  request["Sec-Fetch-Dest"] = "document"
+  request["Sec-Fetch-Mode"] = "navigate"
+  request["Sec-Fetch-Site"] = "same-origin"
+  request["Sec-Fetch-User"] = "?1"
+  request["Upgrade-Insecure-Requests"] = "1"
+  request["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  request["Sec-Ch-Ua"] = "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\""
+  request["Sec-Ch-Ua-Mobile"] = "?0"
+  request["Sec-Ch-Ua-Platform"] = "\"macOS\""
 
   set_guid(request, user)
 
@@ -169,6 +152,7 @@ def send_passanger_info(user)
   set_passanger_data(request)
 
   response = send_req(uri, request)
+  response
 end
 
 # Should check if the ticket has appeared in the backet or not(dont work right now)
