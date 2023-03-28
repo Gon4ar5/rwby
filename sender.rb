@@ -52,7 +52,7 @@ def get_route_params(user)
   product = Nokogiri::HTML(Curl.get(choose_route_link).body_str)
   attrs = product.xpath('//input[starts-with(@class, "js-sch-item-route")]')
   # add check, if attrs.attr("value").value returns error => maybe it cant find free seats, or smth wrong with rw.by
-  unless attrs
+  unless attrs.attr("value")
     p 'check if button for buying exist'
     exit
   end

@@ -24,7 +24,6 @@ send_third_get_request(user)
 
 # Returns long params string about your route and free_seats(an example can be seen at the end of the method)
 params_for_request = get_route_params(user)
-p 'smth get wrong, maybe no free seats, or maybe site doesnt work rn' unless params_for_request
 
 # Returns to us guid after we send the long string from the previous method
 send_request_for_guid(params_for_request, user)

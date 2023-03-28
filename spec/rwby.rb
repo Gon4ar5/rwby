@@ -59,6 +59,8 @@ describe 'requests' do
       send_request_for_session_token(user)
       cookie = send_first_post_request(user)
       send_third_get_request(user)
+      p Date.today
+      p DateTime.new($date.year, $date.month, $date.day, 19, 52).to_time.to_i
       p user.login
       p user.password
       p user.logged_time
