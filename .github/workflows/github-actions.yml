@@ -23,6 +23,9 @@ jobs:
         with:
           ruby-version: '2.7.2'
 
+      - name: Update
+        shell: 'script --return --quiet --command "bash {0}"'
+        run: sudo apt-get update
       - name: Install cURL Headers
         shell: 'script --return --quiet --command "bash {0}"'
         run: sudo apt-get install libcurl4 libcurl4-openssl-dev
