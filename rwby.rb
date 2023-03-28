@@ -35,6 +35,8 @@ free_places_hash = send_ajax_req_for_free_places_hash(user)
 # Returns the location of seats in the train by pixels
 second_ajax_resp = send_ajax_req_for_train_pixels(free_places_hash, user)
 
+send_request_with_seat_info(free_places_hash, second_ajax_resp, user)
+
 # Send last request with user info(first-middle-last names, passport data, etc)
 send_passanger_info(user)
 

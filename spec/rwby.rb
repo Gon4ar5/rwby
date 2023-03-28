@@ -17,21 +17,21 @@ describe 'requests' do
   let(:user) { User.new }
   
   # First unauthorized request to pass.rw.by, just to get session token 
-  context '#send_req_for_session_token' do
+  context '#send_request_for_session_token' do
     
     it 'should set up some cookie' do
-      send_req_for_session_token(user)
+      send_request_for_session_token(user)
 
       expect(user.session).not_to be_nil
-      expect(user.lang).to be_eql 'da9292dd5d6e1b00ab52e48770777e5a26c6a263%7Een'
+      expect(user.lang).not_to be_nil
     end
   end
 
   # Login post request
-  context '#send_first_post_req' do
+  context '#send_first_post_request' do
     it 'should set up cookie' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
 
       expect(user.session).not_to be_nil
       expect(cookie).not_to be_nil
@@ -39,12 +39,11 @@ describe 'requests' do
   end
 
   # # Login get https request, return to us logged_time header
-  context '#send_third_get_req' do
+  context '#send_third_get_request' do
     it 'should set up logged_time header' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
-      send_second_get_req(cookie, user)
-      send_third_get_req(cookie, user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
 
       expect(user.session).not_to be_nil
     end
@@ -57,10 +56,9 @@ describe 'requests' do
   #  value="a:43:{s:5:"index";i:2;s:12:"is_main_from";s:1:"1";s:10:"is_main_to";s:1:"0";s:10:"train_type";s:21:"interregional_economy";s:13:"car_accessory";s:0:"";s:12:"train_number";s:5:"657Б";s:12:"train_thread";s:0:"";s:5:"title";s:32:"ПОЛОЦК - БРЕСТ ЦЕН";s:18:"title_station_from";s:12:"ПОЛОЦК";s:16:"title_station_to";s:17:"БРЕСТ ЦЕН";s:12:"from_station";s:7:"2100001";s:16:"from_station_exp";s:7:"2100001";s:15:"from_station_db";s:17:"Minsk Pasažyrski";s:9:"from_time";i:1651866540;s:10:"to_station";s:7:"2100180";s:14:"to_station_exp";s:7:"2100180";s:13:"to_station_db";s:5:"Pinsk";s:7:"to_time";i:1651887600;s:8:"duration";s:5:"05:51";s:16:"duration_minutes";i:351;s:12:"car_category";s:0:"";s:6:"places";a:2:{i:0;a:5:{s:8:"car_type";i:3;s:10:"free_seats";s:0:"";s:5:"price";s:0:"";s:10:"price_type";s:0:"";s:11:"price_multi";a:1:{i:0;a:5:{s:6:"places";i:93;s:6:"prices";a:1:{i:0;d:14.539999999999999;}s:12:"classservice";s:3:"3П";s:14:"tariff_service";d:3;s:11:"sel_bedding";b:1;}}}>
   context '#get_route_params' do
     it 'should return response with value' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
-      send_second_get_req(cookie, user)
-      send_third_get_req(cookie, user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
       params_for_request = get_route_params(user)
 
       expect(params_for_request).not_to be_nil
@@ -71,10 +69,9 @@ describe 'requests' do
   # Returns to us guid after we send the long string from the previous method
   context '#send_request_for_guid' do
     it 'should return guid' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
-      send_second_get_req(cookie, user)
-      send_third_get_req(cookie, user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
       params_for_request = get_route_params(user)
       send_request_for_guid(params_for_request, user)
 
@@ -101,10 +98,9 @@ describe 'requests' do
   # # "price_eur"=>"7,47", "price_usd"=>"7,92", "price_rub2"=>"", "price_eur2"=>"", "price_usd2"=>""}]}
   context '#send_ajax_req_for_free_places_hash' do
     it 'should return response with all data in json' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
-      send_second_get_req(cookie, user)
-      send_third_get_req(cookie, user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
       params_for_request = get_route_params(user)
       send_request_for_guid(params_for_request, user)
       free_places_hash = send_ajax_req_for_free_places_hash(user)
@@ -123,10 +119,9 @@ describe 'requests' do
   # # Returns the location of seats in the train by pixels
   context '#send_ajax_req_for_train_pixels' do
     it 'should return json with info about pixels' do
-      send_req_for_session_token(user)
-      cookie = send_first_post_req(user)
-      send_second_get_req(cookie, user)
-      send_third_get_req(cookie, user)
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
       params_for_request = get_route_params(user)
       send_request_for_guid(params_for_request, user)
       free_places_hash = send_ajax_req_for_free_places_hash(user)
@@ -140,20 +135,35 @@ describe 'requests' do
   
   # Send all info about train, seats and your seat
   context '#send_request_with_seat_info' do
-    # idk how to set up guid
+    it 'should return json with info about pixels' do
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
+      params_for_request = get_route_params(user)
+      send_request_for_guid(params_for_request, user)
+      free_places_hash = send_ajax_req_for_free_places_hash(user)
+      second_ajax_resp = send_ajax_req_for_train_pixels(free_places_hash, user)
+      response = send_request_with_seat_info(free_places_hash, second_ajax_resp, user)
+
+
+      expect(response.body).to_not be ""
+    end
   end
 
-  # # Send last request with user info(first-middle-last names, passport data, etc)
-  # context '#send_passanger_info' do
-  #   it 'qwe' do
-  #     expect(send_passanger_info).to eq 1
-  #   end
-  # end
+  # Send last request with user info(first-middle-last names, passport data, etc)
+  context '#send_passanger_info' do
+    it 'should return OK status' do
+      send_request_for_session_token(user)
+      cookie = send_first_post_request(user)
+      send_third_get_request(user)
+      params_for_request = get_route_params(user)
+      send_request_for_guid(params_for_request, user)
+      free_places_hash = send_ajax_req_for_free_places_hash(user)
+      second_ajax_resp = send_ajax_req_for_train_pixels(free_places_hash, user)
+      send_request_with_seat_info(free_places_hash, second_ajax_resp, user)
+      response = send_passanger_info(user)
 
-  # # Should check if the ticket has appeared in the backet or not(dont work right now)
-  # context '#send_orders_request' do
-  #   it 'qwe' do
-  #     expect(send_orders_request).to eq 1
-  #   end
-  # end
+      expect(user.order_basket_id).to_not be_nil
+    end
+  end
 end

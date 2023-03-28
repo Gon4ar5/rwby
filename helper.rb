@@ -3,7 +3,7 @@ STATION = {
   pinsk: '2100180'
 }
 
-$date = Date.today + 1
+$date = Date.today
 
 # set guid, logged_token, session, logged_time, lang headers to global variables
 def set_headers_from_response(response, user)
@@ -17,21 +17,23 @@ def set_headers_from_response(response, user)
 
     case cookie_arr[0]
       when 'logged_token'
-        user.logged_token ||= cookie_arr[-1]
+        user.logged_token = cookie_arr[-1]
       when 'logged_fname'
-        user.logged_fname ||= cookie_arr[-1]
+        user.logged_fname = cookie_arr[-1]
       when 'logged_lname'
-        user.logged_lname ||= cookie_arr[-1]
+        user.logged_lname = cookie_arr[-1]
       when 'logged_email'
-        user.logged_email ||= cookie_arr[-1]
+        user.logged_email = cookie_arr[-1]
       when 'logged_time'
         user.logged_time = cookie_arr[-1]
       when 'session'
-        user.session ||= cookie_arr[-1]
+        user.session = cookie_arr[-1]
       when 'lang'
-        user.lang ||= cookie_arr[-1]
+        user.lang = cookie_arr[-1]
       when 'guid'
-        user.guid ||= cookie_arr[-1]
+        user.guid = cookie_arr[-1]
+      when 'order_basket_id'
+        user.order_basket_id ||= cookie_arr[-1]
     end
   end
 end
@@ -49,13 +51,22 @@ def set_date_time
   DateTime.new($date.year, $date.month, $date.day, 19, 52).to_time.to_i
 end
 
+def add_cookie_to_request(request, user)
+  request["Cookie"] = "session=#{user.session}; lang=#{user.lang};" 
+  request["Cookie"] += " logged_fname=#{user.logged_fname};" if user.logged_fname
+  request["Cookie"] += " logged_lname=#{user.logged_lname};" if user.logged_lname
+  request["Cookie"] += " logged_email=#{user.logged_email};" if user.logged_email
+  request["Cookie"] += " logged_token=#{user.logged_token};" if user.logged_token
+  request["Cookie"] += " logged_time=#{user.logged_time};" if user.logged_time
+  request["Cookie"] += " session=#{user.session};" if user.session
+end
+
 # Add common headers and return request object
-def add_headers_to_request(request, user, add_addtl_headers: nil)
+def add_headers_to_request(request, user)
   request["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
   request["Accept-Language"] = "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
   request["Cache-Control"] = "max-age=0"
   request["Connection"] = "keep-alive"
-  request["Cookie"] = "session=#{user.session}; lang=#{user.lang};" 
   request["Sec-Fetch-Dest"] = "document"
   request["Sec-Fetch-Mode"] = "navigate"
   request["Sec-Fetch-Site"] = "cross-site"
@@ -65,28 +76,10 @@ def add_headers_to_request(request, user, add_addtl_headers: nil)
   request["Sec-Ch-Ua"] = "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"100\", \"Google Chrome\";v=\"100\""
   request["Sec-Ch-Ua-Mobile"] = "?0"
   request["Sec-Ch-Ua-Platform"] = "\"macOS\""
-  request["Cookie"] += " logged_fname=#{user.logged_fname};" if user.logged_fname
-  request["Cookie"] += " logged_lname=#{user.logged_lname};" if user.logged_lname
-  request["Cookie"] += " logged_email=#{user.logged_email};" if user.logged_email
-  request["Cookie"] += " logged_token=#{user.logged_token};" if user.logged_token
-  request["Cookie"] += " logged_time=#{user.logged_time};" if user.logged_time
-
-  #add_additional_headers(request) if add_addtl_headers
 
   request
 end
 
-def add_additional_headers(request)
-  request["Accept"] = "application/json, text/javascript, */*; q=0.01"
-  request["Origin"] = "https://pass.rw.by"
-  request["Referer"] = "https://pass.rw.by/en/order/places/"
-  request["Sec-Fetch-Dest"] = "empty"
-  request["Sec-Fetch-Mode"] = "cors"
-  request["Sec-Fetch-Site"] = "same-origin"
-  request["X-Requested-With"] = "XMLHttpRequest"
-
-  request
-end
 # Set https
 def req_options(uri)
   { use_ssl: uri.scheme == "https" }
@@ -125,7 +118,7 @@ def form_second_ajax_request_params(free_places_hash)
     countFreePassengers: 0,
     countSeats: 1,
     depStationCode: STATION[:minsk],
-    departureDate: Date.today.to_s,
+    departureDate: $date.to_s,
     departureTime: "22:49",
     orientation: "H",
     train: "657Б",
@@ -172,15 +165,4 @@ def form_data_for_passangers_request(free_places_hash, second)
     uz: false,
     sel_bedding: true
   }.to_json.to_s
-end
-
-# hardcoded cookies, do not read it plz
-def parse_cookie(response, user)
-  response['set-cookie'].split('; ').map do |cookie|
-    cookie = cookie.split(', ')[1] if cookie.include?("path")
-    next if cookie == nil
-
-    cookie_arr = cookie.split("=")
-    "#{cookie_arr[0]}=#{cookie_arr[1]}"
-  end.compact[0..4].join('; ') + "; session=#{user.session}"
 end
