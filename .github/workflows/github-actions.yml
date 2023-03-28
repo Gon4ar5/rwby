@@ -22,6 +22,12 @@ jobs:
         uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
           ruby-version: '2.7.2'
+
+      - name: Install cURL Headers
+        shell: 'script --return --quiet --command "bash {0}"'
+        run: curl https://curl.haxx.se/download/curl-$V.tar.gz | sudo tar xz -C /usr --strip-components=1 curl-$V/include
+        env:
+          V: 7.58.0
       - name: Install dependencies
         shell: 'script --return --quiet --command "bash {0}"'
         run: bundle install
