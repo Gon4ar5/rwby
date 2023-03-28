@@ -59,6 +59,11 @@ describe 'requests' do
       send_request_for_session_token(user)
       cookie = send_first_post_request(user)
       send_third_get_request(user)
+      p user.login
+      p user.password
+      p user.logged_time
+      p user.logged_email
+      p user.session
       params_for_request = get_route_params(user)
 
       expect(params_for_request).not_to be_nil
