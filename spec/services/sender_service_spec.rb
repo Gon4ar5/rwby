@@ -67,23 +67,23 @@ describe SenderService, type: :service do
     end
   end
 
-  # # Returns the train info and emptyPlaces
-  # # response example
-  # # {"isSimplePopup"=>false, "carType"=>"2-сl. sleeping compt.", "trainNumber"=>"657Б", "trainType"=>"interregional_economy", 
-  # # "isFastTrain"=>true, "trainType2"=>"СК", "from"=>"Polack", "to"=>"Brest Centraĺny", "fromCode"=>"2100001", "toCode"=>"2100180", 
-  # # "hideCarImage"=>false, "route"=>{"from"=>"Minsk Pasažyrski", "to"=>"Pinsk", "startDate"=>"05/06/2022", "startDateForRequest"=>"06.05.2022", 
-  # # "startTime"=>"22:49", "endDate"=>"05/07/2022", "endTime"=>"04:40", "timeInWay"=>"5 h 51 min", "trainDepDate"=>"2022-05-06", 
-  # # "startDateFormatted"=>"Fri, May 06", "hidden"=>false}, "allow_order"=>true, "tariffs"=>[{"price"=>"201 800", "price_byn"=>"20,18", "price2"=>"", 
-  # # "price_byn2"=>"", "typeAbbr"=>"2К", "typeAbbrPostfix"=>"", "isBicycle"=>false, "type"=>"2-сl. sleeping compt. (2К)", "typeAbbrInt"=>"", 
-  # # "description"=>"Car type – 2-сl. sleeping compt.<br />4-bed compartments. Seating capacity: up to 40<br />Service class – 2К 2-сl. sleeping compt. (no services)", 
-  # # "sign"=>"", "is_car_for_disabled"=>false, "uz"=>false, "isElRegPossible"=>true, "tariff_service"=>3, "sel_bedding"=>true, "cars"=>[{"number"=>"02", "subType"=>"66К", 
-  # # "carrier"=>"БЧ", "owner"=>"БЧ /БЧ", "emptyPlaces"=>["034"], "hideLegend"=>true, "imgSrc"=>"/media/i/vagons/kupe.png", "hash"=>"49532A05A3EAB96B467C9F5C62749D68", 
-  # # "noSmoking"=>false, "addSigns"=>"", "saleOnTwo"=>false, "trainLetter"=>"Б", "classServiceInt"=>"", "typeShow"=>"Купе", "ticket_selling_allowed"=>true, "isElRegPossible"=>true, 
-  # # "sel_bedding"=>true, "upperPlaces"=>1, "lowerPlaces"=>0, "totalPlacesHide"=>true, "totalPlaces"=>1}, {"number"=>"06", "subType"=>"66К", 
-  # # "carrier"=>"БЧ", "owner"=>"БЧ /БЧ", "emptyPlaces"=>["010"], "hideLegend"=>true, "imgSrc"=>"/media/i/vagons/kupe.png", "hash"=>"A9B79176C1D8BADF9884676656633BE2", 
-  # # "noSmoking"=>false, "addSigns"=>"", "saleOnTwo"=>false, "trainLetter"=>"Б", "classServiceInt"=>"", "typeShow"=>"Купе", "ticket_selling_allowed"=>true, 
-  # # "isElRegPossible"=>true, "sel_bedding"=>true, "upperPlaces"=>1, "lowerPlaces"=>0, "totalPlacesHide"=>true, "totalPlaces"=>1}], "price_rub"=>"525,29", 
-  # # "price_eur"=>"7,47", "price_usd"=>"7,92", "price_rub2"=>"", "price_eur2"=>"", "price_usd2"=>""}]}
+  # Returns the train info and emptyPlaces
+  # response example
+  # {"isSimplePopup"=>false, "carType"=>"2-сl. sleeping compt.", "trainNumber"=>"657Б", "trainType"=>"interregional_economy", 
+  # "isFastTrain"=>true, "trainType2"=>"СК", "from"=>"Polack", "to"=>"Brest Centraĺny", "fromCode"=>"2100001", "toCode"=>"2100180", 
+  # "hideCarImage"=>false, "route"=>{"from"=>"Minsk Pasažyrski", "to"=>"Pinsk", "startDate"=>"05/06/2022", "startDateForRequest"=>"06.05.2022", 
+  # "startTime"=>"22:49", "endDate"=>"05/07/2022", "endTime"=>"04:40", "timeInWay"=>"5 h 51 min", "trainDepDate"=>"2022-05-06", 
+  # "startDateFormatted"=>"Fri, May 06", "hidden"=>false}, "allow_order"=>true, "tariffs"=>[{"price"=>"201 800", "price_byn"=>"20,18", "price2"=>"", 
+  # "price_byn2"=>"", "typeAbbr"=>"2К", "typeAbbrPostfix"=>"", "isBicycle"=>false, "type"=>"2-сl. sleeping compt. (2К)", "typeAbbrInt"=>"", 
+  # "description"=>"Car type – 2-сl. sleeping compt.<br />4-bed compartments. Seating capacity: up to 40<br />Service class – 2К 2-сl. sleeping compt. (no services)", 
+  # "sign"=>"", "is_car_for_disabled"=>false, "uz"=>false, "isElRegPossible"=>true, "tariff_service"=>3, "sel_bedding"=>true, "cars"=>[{"number"=>"02", "subType"=>"66К", 
+  # "carrier"=>"БЧ", "owner"=>"БЧ /БЧ", "emptyPlaces"=>["034"], "hideLegend"=>true, "imgSrc"=>"/media/i/vagons/kupe.png", "hash"=>"49532A05A3EAB96B467C9F5C62749D68", 
+  # "noSmoking"=>false, "addSigns"=>"", "saleOnTwo"=>false, "trainLetter"=>"Б", "classServiceInt"=>"", "typeShow"=>"Купе", "ticket_selling_allowed"=>true, "isElRegPossible"=>true, 
+  # "sel_bedding"=>true, "upperPlaces"=>1, "lowerPlaces"=>0, "totalPlacesHide"=>true, "totalPlaces"=>1}, {"number"=>"06", "subType"=>"66К", 
+  # "carrier"=>"БЧ", "owner"=>"БЧ /БЧ", "emptyPlaces"=>["010"], "hideLegend"=>true, "imgSrc"=>"/media/i/vagons/kupe.png", "hash"=>"A9B79176C1D8BADF9884676656633BE2", 
+  # "noSmoking"=>false, "addSigns"=>"", "saleOnTwo"=>false, "trainLetter"=>"Б", "classServiceInt"=>"", "typeShow"=>"Купе", "ticket_selling_allowed"=>true, 
+  # "isElRegPossible"=>true, "sel_bedding"=>true, "upperPlaces"=>1, "lowerPlaces"=>0, "totalPlacesHide"=>true, "totalPlaces"=>1}], "price_rub"=>"525,29", 
+  # "price_eur"=>"7,47", "price_usd"=>"7,92", "price_rub2"=>"", "price_eur2"=>"", "price_usd2"=>""}]}
   context '#send_ajax_req_for_free_places_hash' do
     it 'should return response with all data in json' do
       SenderService.send_request_for_session_token(session)

@@ -168,5 +168,4 @@ module SenderHelper
 	    sel_bedding: true
 	  }.to_json.to_s
 	end
-
 end
