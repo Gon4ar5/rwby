@@ -17,7 +17,7 @@ class SenderService
 	def self.send_request_for_session_token(session)
 	  uri = URI.parse("https://pass.rw.by/en/")
 	  request = Net::HTTP::Get.new(uri)
-
+	  p request['headers']
 	  response = send_req(uri, request)
 	  set_headers_from_response(response, session)
 	end
