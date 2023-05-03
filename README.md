@@ -1,24 +1,31 @@
-# README
+# RwBy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application for registering train tickets on the rwby website. 
+CI/CD pipeline on GitHub Actions
+Hosted on Alibaba cloud
 
-Things you may want to cover:
+## Install, run and testing
 
-* Ruby version
+### Requirements:
 
-* System dependencies
+- rvm or rbenv
+- ruby 2.7.2
+- bundler version 2.3.7
 
-* Configuration
+### Usage
 
-* Database creation
+#### Running the tests:
 
-* Database initialization
+```
+$ rspec spec
+```
 
-* How to run the test suite
+#### Running the app:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails s
+```
 
-* Deployment instructions
+## Github
 
-* ...
+- https://github.com/Gon4ar5/rwby
